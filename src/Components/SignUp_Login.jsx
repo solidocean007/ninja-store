@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import InputBase from './InputBase'
+import './SignUp_Login.css';
 
 function SignUp_Login() {
   const [inputs, setInputs] = useState({
@@ -11,15 +12,19 @@ function SignUp_Login() {
     totalBill: '',
   })
 
-  const handleCreateAccount = (event) => {
-    event.preventDefault();
-    // const newAccount;
-    }
-  
+  console.log('Initial state:', inputs);
+
   const handleInputData = (event) => {
     const { name, value } = event.target;
     setInputs((oldValues) => ({...oldValues, [name]: value}));
   };
+
+  const handleCreateAccount = (event) => {
+    event.preventDefault();
+    console.log('Current state:', inputs);
+    }
+  
+  
 
   // handleBlur = ({ target: { name, value }}) => this.handleValidations(name, value); 
 
@@ -32,9 +37,12 @@ function SignUp_Login() {
   ]
 
   return (
-    <div className='logInOptions'>
+    <div className='login-modal'>
+      <div className='logInOptions'>
       <button>SIGN IN</button>
       <button>CREATE ACCOUNT</button>
+      </div>
+      
       <form onSubmit={handleCreateAccount}>
         { inputData.length
           ? inputData.map((item) => (
@@ -42,6 +50,7 @@ function SignUp_Login() {
               key={item.name}
               placeholder={item.label}
               type={item.type}
+              value={inputs[item.name]}
               onChange={handleInputData}
               name={item.name}
               // onBlur={handleBlur}

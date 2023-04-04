@@ -1,10 +1,9 @@
 import React from "react";
 import './InputBase.css';
 
-const InputBase = () => (
-  <label htmlFor="">
-    <input className="input-root" type="text" />
-
+const InputBase = ({ name, value, ...props}) => (
+  <label>
+    <input className="input-root" type="text" name={name} value={value} {...props}/>
   </label>
 ) 
 
