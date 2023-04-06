@@ -1,10 +1,18 @@
-import React from "react";
+import React from 'react';
 import './InputBase.css';
 
-const InputBase = ({ name, value, ...props}) => (
-  <label>
-    <input className="input-root" type="text" name={name} value={value} {...props}/>
-  </label>
-) 
+
+function InputBase({ value, onChange, placeholder, type = 'text', className = '', ...restProps }) {
+  return (
+    <input
+      className={`input-base ${className}`}
+      type={type}
+      placeholder={placeholder}
+      value={value}
+      onChange={onChange}
+      {...restProps}
+    />
+  );
+}
 
 export default InputBase;
