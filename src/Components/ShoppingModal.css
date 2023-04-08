@@ -1,7 +1,30 @@
+.login-header {
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  width: 70%;
+}
+
+.login-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.login-block div {
+  margin: 0 20px;
+}
+
+.btn {
+  background-color: blueviolet;
+  padding: 3px;
+  border-radius: 3px;
+}
+
 .featured-items {
   display: flex;
+  flex-wrap: wrap;
   align-items: flex-start;
-  /* height: 50vh; */
 }
 
 .item-container {

@@ -8,7 +8,15 @@ function ShoppingModal() {
 
   return (
     <div className="store-front">
-      <div className="login-header"></div>
+      <div className="login-header">
+        <div className="title-block"><h1>Voltron</h1></div>
+        <div className="login-block">
+          <div className="sign-up btn"><h2>Sign up</h2></div>
+          <div className="login-box btn"><h2>Login</h2></div>
+          <div className="cart-box btn"><h2>Cart</h2></div>
+        </div>  
+      </div>
+
       <div className="featured-items">
         {data.map((item, index) => (
           <div className='item-container' key={index}>
