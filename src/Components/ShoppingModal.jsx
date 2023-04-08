@@ -12,9 +12,24 @@ function ShoppingModal() {
       <div className="featured-items">
         {data.map((item, index) => (
           <div className='item-container' key={index}>
-            <div>
-              <img src={item.image} alt={item.name} />
+            <div className="image-box">
+              <img
+                src={item.image}
+                alt={item.name}
+                style={{
+                  width: item.size?.width,
+                  height: item.size?.height
+                }}
+                />
             </div>
+            <div className="lion-header">
+            <h2>{item.name}</h2>
+            </div>
+            <div className="lion-price">
+            <h1>{item.price}</h1>
+            <button>Add to Cart</button>
+            </div>
+
           </div>
         ))}
       </div>
