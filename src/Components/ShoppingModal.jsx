@@ -1,19 +1,30 @@
 import { useState } from "react";
+import SignUpLoginButton from "./SignUpLoginButton";
+import CartButton from "./CartButton";
+import SignUp_Login from "./SignUp_Login";
 import InputBase from "./InputBase";
 import data from "./data";
 import './ShoppingModal.css';
+import { toggleSignUpLogin } from "./utilities/handleChanges";
 
 function ShoppingModal() {
+  
   const [Cart, setCart] = useState({});
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [showSignUpLogin, setShowSignUpLogin] = useState(false);
+
+  const handleSignUpLoginClick = () => {
+    setShowSignUpLogin(!showSignUpLogin);
+    toggleSignUpLogin();
+  }
 
   return (
     <div className="store-front">
       <div className="login-header">
         <div className="title-block"><h1>Voltron</h1></div>
         <div className="login-block">
-          <div className="sign-up btn"><h2>Sign up</h2></div>
-          <div className="login-box btn"><h2>Login</h2></div>
-          <div className="cart-box btn"><h2>Cart</h2></div>
+          <div className="sign-up btn"><SignUpLoginButton onClick={handleSignUpLoginClick} /></div>
+          <div className="cart-box btn"><CartButton /></div>
         </div>  
       </div>
 
@@ -41,6 +52,12 @@ function ShoppingModal() {
           </div>
         ))}
       </div>
+      {showSignUpLogin && (
+        <div>
+          <div className="modal-overlay"></div>
+          <SignUp_Login onClose={() => setShowSignUpLogin(false)} />
+        </div>
+      )}
     </div>
   );
 }

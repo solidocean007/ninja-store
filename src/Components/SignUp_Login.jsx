@@ -2,7 +2,7 @@ import { useState } from 'react'
 import InputBase from './InputBase'
 import './SignUp_Login.css';
 
-function SignUp_Login() {
+function SignUp_Login({ onClose }) {
   const [inputs, setInputs] = useState({
     email: '',
     password: '',
@@ -23,8 +23,6 @@ function SignUp_Login() {
     event.preventDefault();
     console.log('Current state:', inputs);
     }
-  
-  
 
   // handleBlur = ({ target: { name, value }}) => this.handleValidations(name, value); 
 
@@ -37,10 +35,11 @@ function SignUp_Login() {
   ]
 
   return (
-    <div className='login-modal'>
+    <div className='login-modal' id="signup-login-modal">
       <div className='logInOptions'>
       <button>SIGN IN</button>
       <button>CREATE ACCOUNT</button>
+      <button onClick={onClose}>CLOSE</button>
       </div>
       
       <form onSubmit={handleCreateAccount}>
