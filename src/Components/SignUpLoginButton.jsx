@@ -1,9 +1,9 @@
 import React from "react";
 
-function SignUpLoginButton(props) {
+function SignUpLogInButton(props) {
   return (
     <button onClick={props.onClick}>Sign Up / Login</button>
   );
 }
 
-export default SignUpLoginButton;
+export default SignUpLogInButton;

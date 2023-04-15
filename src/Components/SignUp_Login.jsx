@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { handleInputData } from './utilities/handleChanges'
 import InputBase from './InputBase'
 import './SignUp_Login.css';
 
@@ -11,13 +12,6 @@ function SignUp_Login({ onClose }) {
     cartItems: '',
     totalBill: '',
   })
-
-  console.log('Initial state:', inputs);
-
-  const handleInputData = (event) => {
-    const { name, value } = event.target;
-    setInputs((oldValues) => ({...oldValues, [name]: value}));
-  };
 
   const handleCreateAccount = (event) => {
     event.preventDefault();
