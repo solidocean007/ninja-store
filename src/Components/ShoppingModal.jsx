@@ -32,6 +32,7 @@ function ShoppingModal() {
   const generateItemBlock = ({ name, image, price, size }, index) => {
     const inCart = cart.find((obj) => obj.name === name);
     const buttonText = inCart ? "Remove item" : "Add to Cart";
+    console.log(image);
     return (
       <div className="item-container" key={index}>
         <div className="image-box">
@@ -52,7 +53,7 @@ function ShoppingModal() {
         </div>
         <div className="cart-btn">
           <button
-            onClick={() => handleCartUpdate({ name, price }, cart, setCart)}
+            onClick={() => handleCartUpdate({ image, name, price }, cart, setCart)}
           >
             {buttonText}
           </button>

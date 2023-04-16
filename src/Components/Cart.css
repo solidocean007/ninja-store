@@ -1,11 +1,7 @@
 .cart-modal {
-  background-color: white;
-  width: 70%;
-  height: 200px;
-}
-
-.cart-modal {
   position: fixed;
+  width: 70%;
+  height: auto;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -14,9 +10,32 @@
   padding: 10px;
   z-index: 2;
   background-color: white;
-
 }
 
 .cart-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.cart-item, .line-item-total {
+  color: black;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 1px solid black;
+  padding: 0.5rem 0;
+}
+
+.quantity-btn {
+  display: flex;
+  color: whitesmoke;
+  font-size: xx-small;
+  align-items: center;
+  height: 10px;
+}
+
+.line-item-total {
   color: black;
 }
