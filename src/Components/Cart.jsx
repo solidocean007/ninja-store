@@ -2,7 +2,12 @@ import { useState } from "react";
 import { handleQuantityChange } from "./utilities/handleChanges";
 import "./Cart.css";
 
-function Cart({ cart, setCart, onClose }) {
+function Cart({ cart, setCart, onClose, subTotalBill, setSubTotalBill }) {
+  setSubTotalBill(cart.reduce(
+    (accumulator, { price, quantity }) => accumulator + price * quantity,
+    0
+  ));
+
   return (
     <div className="cart-modal" id="cart-container-modal">
       <div className="cart-header">
@@ -57,13 +62,14 @@ function Cart({ cart, setCart, onClose }) {
           <div>
             <div className="summary-header">Summary</div>
             <div className="promo-box">Promo</div>
-            <div className="Sub-total">Cart Subtotal: {}</div>
+            <div className="Sub-total">Subtotal: {subTotalBill}</div>
           </div>
 
           <div>Checkout</div>
         </div>
       </div>
     </div>
+
   );
 }
 

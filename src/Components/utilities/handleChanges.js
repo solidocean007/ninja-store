@@ -11,11 +11,9 @@ export const handleInputData = (event) => {
 };
 
 export function handleQuantityChange(setCart, index, newQuantity) {
-  console.log('Index:', index)
-  console.log('newQuantity: ', newQuantity)
   setCart(prevCart => {
     const updatedCart = [...prevCart];
-    updatedCart[index].quantity = newQuantity;
+    newQuantity >= 0 ? updatedCart[index].quantity = newQuantity : updatedCart;
     return updatedCart;
     console.log(JSON.stringify(updatedCart) + ' : updatedCart after quantity change');
   });

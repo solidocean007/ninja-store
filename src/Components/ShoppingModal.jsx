@@ -13,7 +13,9 @@ function ShoppingModal() {
   const [showCart, setShowCart] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showSignUpLogin, setShowSignUpLogin] = useState(false);
+  const [subTotalBill, setSubTotalBill] = useState(0);
 
+  // Function to handle opening the SignUpLogin component
   const handleSignUpLoginClick = () => {
     setShowSignUpLogin(!showSignUpLogin);
     toggleSignUpLogin();
@@ -53,7 +55,9 @@ function ShoppingModal() {
         </div>
         <div className="cart-btn">
           <button
-            onClick={() => handleCartUpdate({ image, name, price }, cart, setCart)}
+            onClick={() =>
+              handleCartUpdate({ image, name, price }, cart, setCart)
+            }
           >
             {buttonText}
           </button>
@@ -92,7 +96,13 @@ function ShoppingModal() {
       {showCart && (
         <div>
           <div className="modal-overlay"></div>
-          <Cart cart={cart} setCart={setCart} onClose={handleCloseCart} />
+          <Cart
+            cart={cart}
+            setCart={setCart}
+            onClose={handleCloseCart}
+            subTotalBill={subTotalBill}
+            setSubTotalBill={setSubTotalBill}
+          />
         </div>
       )}
     </div>
