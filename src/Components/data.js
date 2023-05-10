@@ -1,4 +1,4 @@
-const data = [
+export const data = [
   {
     name: 'Red Lion',
     image: 'src/assets/Red-Lion.png',
@@ -31,4 +31,27 @@ const data = [
   },
 ]
 
-export default data;
+export const inputData = [
+  {
+    label: "Your email address",
+    name: "email",
+    type: "text",
+    error: "emailError",
+  },
+  {
+    label: "Create a password",
+    name: "password",
+    type: "text",
+    value: "",
+    error: "passwordError",
+  },
+  {
+    label: "Confirm your password",
+    name: "passwordConfirm",
+    value: "",
+    type: "text",
+    error: "confirmPasswordError",
+  },
+  { label: "Your Name", name: "userName", type: "text", error: "nameError" },
+  { label: "Zip code", name: "zip", type: "text", error: "zipError" },
+];

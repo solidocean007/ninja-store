@@ -1,13 +1,9 @@
-export function toggleSignUpLogin() {
-  const signupLoginModal = document.getElementById("signup-login-modal");
-  if (signupLoginModal) {
-    signupLoginModal.classList.toggle("show");
-  }
-}
-
-export const handleInputData = (event) => {
+export const handleInputData = (event, setInputs, validateInput) => {
   const { name, value } = event.target;
-  setInputs((oldValues) => ({...oldValues, [name]: value}));
+  const isValid = validateInput(name, value);
+  if (isValid) {
+    setInputs((oldValues) => ({...oldValues, [name]: value}));
+  }
 };
 
 export function handleQuantityChange(setCart, index, newQuantity) {
@@ -15,7 +11,10 @@ export function handleQuantityChange(setCart, index, newQuantity) {
     const updatedCart = [...prevCart];
     newQuantity >= 0 ? updatedCart[index].quantity = newQuantity : updatedCart;
     return updatedCart;
-    console.log(JSON.stringify(updatedCart) + ' : updatedCart after quantity change');
   });
 }
 
+export const handleCreateAccount = (event) => {
+  event.preventDefault();
+  console.log("Current state:", inputs);
+};

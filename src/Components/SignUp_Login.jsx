@@ -1,5 +1,7 @@
 import { useState } from "react";
 import { handleInputData } from "./utilities/handleChanges";
+import { handleCreateAccount } from "./utilities/handleChanges";
+import { inputData } from "./data";
 import InputBase from "./InputBase";
 import "./SignUp_Login.css";
 
@@ -13,41 +15,29 @@ function SignUp_Login({ onClose }) {
     totalBill: "",
   });
 
-  const handleCreateAccount = (event) => {
-    event.preventDefault();
-    console.log("Current state:", inputs);
+  const [error, setError] = useState({});
+
+  const handleBlur = ({ target: { name, value }}) => {
+    // call validation function and update error state
+    const validationError = validateInput(name, value);
+    setError((prevErrors) => ({ ...prevErrors, [name]: validationError }));
   };
 
-  // handleBlur = ({ target: { name, value }}) => this.handleValidations(name, value);
+  const handleInput = (event) => {
+    // call handleInputData function with validation function
+    handleInputData(event, setInputs, validateInput);
+  };
 
-  const inputData = [
-    {
-      label: "Your email address",
-      name: "email",
-      type: "text",
-      error: "emailError",
-    },
-    {
-      label: "Create a password",
-      name: "password",
-      type: "text",
-      error: "passwordError",
-    },
-    {
-      label: "Confirm your password",
-      name: "passwordConfirm",
-      type: "text",
-      error: "confirmPasswordError",
-    },
-    { label: "Your Name", name: "userName", type: "text", error: "nameError" },
-    { label: "Zip code", name: "zip", type: "text", error: "zipError" },
-  ];
+  // define validation function
+  const validateInput = (name, value) => {
+    // validate input and return error message, if any
+    // return null if input is valid
+  };
 
   return (
-    <div className="login-modal" id="signup-login-modal">
+    <div className="login-modal" id="sign-up-login-modal">
       <div className="logInOptions">
-        <button>SIGN IN</button>
-        <button>CREATE ACCOUNT</button>
+        <h3>Login</h3>
         <button onClick={onClose}>CLOSE</button>
       </div>
 
@@ -59,20 +49,19 @@ function SignUp_Login({ onClose }) {
                 placeholder={item.label}
                 type={item.type}
                 value={inputs[item.name]}
-                onChange={handleInputData}
+                onChange={handleInput}
                 name={item.name}
-                // onBlur={handleBlur}
-                // error={error}
-                // errorMessage={
-                //   (error
-                //     && error[item.error]
-                //     && error[item.error].length > 1)
-                //     ? error[item.error]
-                //     : null
-                //   }
+                onBlur={handleBlur}
+                error={error}
+                errormessage={
+                  error && error[item.error] ? error[item.error] : null
+                  }
               />
             ))
           : null}
+        <div >
+        <button>CREATE ACCOUNT</button>
+        </div>
         <div className="btn-wrapper">
           <input type="submit" value="Save" />
         </div>

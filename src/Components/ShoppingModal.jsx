@@ -3,10 +3,11 @@ import SignUpLogInButton from "./SignUpLogInButton";
 import CartButton from "./CartButton";
 import SignUp_Login from "./SignUp_Login";
 import Cart from "./Cart";
-import data from "./data";
+import Title from "./Title";
+import ItemGrid from "./ItemGrid";
+
 import "./ShoppingModal.css";
-import { toggleSignUpLogin } from "./utilities/handleChanges";
-import { handleCartUpdate } from "./utilities/cart";
+
 
 function ShoppingModal() {
   const [cart, setCart] = useState([]);
@@ -14,12 +15,6 @@ function ShoppingModal() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showSignUpLogin, setShowSignUpLogin] = useState(false);
   const [subTotalBill, setSubTotalBill] = useState(0);
-
-  // Function to handle opening the SignUpLogin component
-  const handleSignUpLoginClick = () => {
-    setShowSignUpLogin(!showSignUpLogin);
-    toggleSignUpLogin();
-  };
 
   // Function to handle opening the cart modal
   const handleCartButtonOnClick = () => {
@@ -31,50 +26,18 @@ function ShoppingModal() {
     setShowCart(false);
   };
 
-  const generateItemBlock = ({ name, image, price, size }, index) => {
-    const inCart = cart.find((obj) => obj.name === name);
-    const buttonText = inCart ? "Remove item" : "Add to Cart";
-    console.log(image);
-    return (
-      <div className="item-container" key={index}>
-        <div className="image-box">
-          <img
-            src={image}
-            alt={name}
-            style={{
-              width: size?.width,
-              height: size?.height,
-            }}
-          />
-        </div>
-        <div className="lion-header">
-          <h2>{name}</h2>
-        </div>
-        <div className="lion-price">
-          <h1>{price}</h1>
-        </div>
-        <div className="cart-btn">
-          <button
-            onClick={() =>
-              handleCartUpdate({ image, name, price }, cart, setCart)
-            }
-          >
-            {buttonText}
-          </button>
-        </div>
-      </div>
-    );
-  };
-
   return (
     <div className="store-front">
       <div className="login-header">
         <div className="title-block">
-          <h1>Voltron</h1>
+          <Title title="Voltron" />
         </div>
         <div className="login-block">
           <div className="sign-up btn">
-            <SignUpLogInButton onClick={handleSignUpLoginClick} />
+            <SignUpLogInButton
+              isLoggedIn={isLoggedIn}
+              setShowSignUpLogin={setShowSignUpLogin}
+            />
           </div>
           <div className="cart-box btn">
             <CartButton onClick={handleCartButtonOnClick} />
@@ -82,12 +45,10 @@ function ShoppingModal() {
         </div>
       </div>
 
-      <div className="featured-items">
-        {data.map((item, index) => generateItemBlock(item, index))}
-      </div>
+      <ItemGrid cart={cart} setCart={setCart} />
 
       {showSignUpLogin && (
-        <div>
+        <div className="login-signUp-modal">
           <div className="modal-overlay"></div>
           <SignUp_Login onClose={() => setShowSignUpLogin(false)} />
         </div>
