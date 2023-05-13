@@ -1,76 +1,110 @@
-import { useState } from "react";
-import { handleInputData } from "./utilities/handleChanges";
-import { handleCreateAccount } from "./utilities/handleChanges";
-import { inputData } from "./data";
-import InputBase from "./InputBase";
-import "./SignUp_Login.css";
+import React, { useState, useEffect } from 'react';
+import { inputData } from './data';
+import { handleInputData, handleCreateAccount, validateInput } from './utilities/handleChanges';
+import InputBase from './InputBase';
+import './SignUp_Login.css';
 
 function SignUp_Login({ onClose }) {
   const [inputs, setInputs] = useState({
-    email: "",
-    password: "",
-    userName: "",
-    zip: "",
-    cartItems: "",
-    totalBill: "",
+    email: '',
+    password: '',
+    passwordConfirm: '',
+    firstName: '',
+    lastName: '',
+    postalCode: '',
   });
 
-  const [error, setError] = useState({});
+  const [users, setUsers] = useState([]);
+  const [errors, setErrors] = useState({});
+  const [isSignUp, setIsSignUp] = useState(true);
 
-  const handleBlur = ({ target: { name, value }}) => {
-    // call validation function and update error state
-    const validationError = validateInput(name, value);
-    setError((prevErrors) => ({ ...prevErrors, [name]: validationError }));
+  useEffect(() => {
+    console.log("Updated users:", users);
+  }, [users]);
+
+  const handleBlur = ({ target: { name, value } }) => {
+    const validationError = validateInput(name, value, inputs, users);
+    setErrors((prevErrors) => ({ ...prevErrors, [name]: validationError }));
   };
 
   const handleInput = (event) => {
-    // call handleInputData function with validation function
-    handleInputData(event, setInputs, validateInput);
+    const { name, value } = event.target;
+    setInputs((oldValues) => ({ ...oldValues, [name]: value }));
+  };
+  
+  const handleFormSubmit = (event) => {
+    event.preventDefault();
+    const isValid = Object.values(errors).every((error) => error === '');
+    console.log(isValid, " : isValid")
+    console.log(inputs, ' : is inputs inside of handleFormSubmit')
+    if (isValid) {
+      handleCreateAccount(inputs, setInputs, users, setUsers);
+    }
+    console.log(users, ": users");
   };
 
-  // define validation function
-  const validateInput = (name, value) => {
-    // validate input and return error message, if any
-    // return null if input is valid
+  const toggleMode = () => {
+    setIsSignUp((prevMode) => !prevMode);
+    setInputs({
+      email: '',
+      password: '',
+      passwordConfirm: '',
+      firstName: '',
+      lastName: '',
+      postalCode: '',
+    });
+    setErrors({});
   };
 
   return (
-    <div className="login-modal" id="sign-up-login-modal">
+    <div className="auth-modal" id="sign-up-login-modal">
       <div className="logInOptions">
-        <h3>Login</h3>
+        <h3>{isSignUp ? 'Create Account' : 'Login'}</h3>
         <button onClick={onClose}>CLOSE</button>
       </div>
 
-      <form onSubmit={handleCreateAccount}>
-        {inputData.length
-          ? inputData.map((item) => (
-              <InputBase
-                key={item.name}
-                placeholder={item.label}
-                type={item.type}
-                value={inputs[item.name]}
-                onChange={handleInput}
-                name={item.name}
-                onBlur={handleBlur}
-                error={error}
-                errormessage={
-                  error && error[item.error] ? error[item.error] : null
-                  }
-              />
-            ))
-          : null}
-        <div >
-        <button>CREATE ACCOUNT</button>
-        </div>
+      <form onSubmit={handleFormSubmit}>
+        {inputData.map((item) => {
+          if (!isSignUp && item.name === 'passwordConfirm') {
+            return null;
+          }
+
+          return (
+            <InputBase
+              className={item.className}
+              key={item.name}
+              placeholder={item.label}
+              type={item.type}
+              value={inputs[item.name]}
+              onChange={handleInput}
+              name={item.name}
+              onBlur={handleBlur}
+              error={errors[item.name]}
+            />
+          );
+        })}
+
         <div className="btn-wrapper">
-          <input type="submit" value="Save" />
-        </div>
-        <div className="btn-wrapper">
-          <input type="submit" value="Facebook" />
+          <input type="submit" value={isSignUp ? 'Create Account' : 'Login'} />
         </div>
       </form>
+
+      <div className="switch-mode">
+        {isSignUp ? (
+          <>
+            Already have an account?{' '}
+            <button onClick={toggleMode}>Switch to Login</button>
+          </>
+        ) : (
+          <>
+            Don't have an account?{' '}
+            <button onClick={toggleMode}>Switch to Sign Up</button>
+          </>
+        )}
+      </div>
     </div>
   );
 }
 
 export default SignUp_Login;
+

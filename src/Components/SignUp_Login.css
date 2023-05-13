@@ -1,4 +1,4 @@
-.login-modal {
+.auth-modal {
   width: 50rem;
   position: fixed;
   top: 50%;
@@ -36,7 +36,7 @@ form input {
     0,
     0,
     0.9
-  ); /* Use any color you want with opacity */
+  );
   z-index: 1;
 }
 

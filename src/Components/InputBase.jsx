@@ -1,18 +1,22 @@
 import React from 'react';
 import './InputBase.css';
 
-
-function InputBase({ value, onChange, placeholder, type = 'text', className = '', ...restProps }) {
+function InputBase({ value, onChange, placeholder, type = 'text', className = '', name, error, ...restProps }) {
   return (
-    <input
-      className={`input-base ${className}`}
-      type={type}
-      placeholder={placeholder}
-      value={value}
-      onChange={onChange}
-      {...restProps}
-    />
+    <div>
+      <input
+        className={`input-base ${className}`}
+        type={type}
+        name={name}
+        placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+        {...restProps}
+      />
+      <div>{error}</div>
+    </div>
   );
 }
 
 export default InputBase;
+
