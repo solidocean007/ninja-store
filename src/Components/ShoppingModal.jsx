@@ -5,16 +5,21 @@ import SignUp_Login from "./SignUp_Login";
 import Cart from "./Cart";
 import Title from "./Title";
 import ItemGrid from "./ItemGrid";
-
 import "./ShoppingModal.css";
 
 
 function ShoppingModal() {
+  const [users, setUsers] = useState([]);
+
   const [cart, setCart] = useState([]);
   const [showCart, setShowCart] = useState(false);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showSignUpLogin, setShowSignUpLogin] = useState(false);
   const [subTotalBill, setSubTotalBill] = useState(0);
+
+  const handleCloseSignUpLogin = () => {
+    setShowSignUpLogin(false);
+  }
 
   // Function to handle opening the cart modal
   const handleCartButtonOnClick = () => {
@@ -50,7 +55,12 @@ function ShoppingModal() {
       {showSignUpLogin && (
         <div className="login-signUp-modal">
           <div className="modal-overlay"></div>
-          <SignUp_Login onClose={() => setShowSignUpLogin(false)} />
+          <SignUp_Login 
+          onClose={handleCloseSignUpLogin} 
+          setShowSignUpLogin={setShowSignUpLogin}
+          users={users}
+          setUsers={setUsers}
+          />
         </div>
       )}
 

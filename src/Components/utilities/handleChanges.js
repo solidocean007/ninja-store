@@ -1,17 +1,3 @@
-export const handleInputData = (
-  event,
-  inputs,
-  setInputs,
-  setErrors,
-  validateInput
-) => {
-  const { name, value } = event.target;
-  const validationError = validateInput(name, value, inputs);
-  setInputs((oldValues) => ({ ...oldValues, [name]: value }));
-  setErrors((prevErrors) => ({ ...prevErrors, [name]: validationError }));
-  return validationError;
-};
-
 export function handleQuantityChange(setCart, index, newQuantity) {
   setCart((prevCart) => {
     const updatedCart = [...prevCart];
@@ -22,13 +8,12 @@ export function handleQuantityChange(setCart, index, newQuantity) {
   });
 }
 
-export const handleCreateAccount = (inputs, setInputs, users, setUsers) => {
+export const handleCreateAccount = (inputs, setInputs, setUsers, setShowSignUpLogin) => {
   const newUser = { ...inputs };
 
   setUsers((prevUsers) => [...prevUsers, newUser]);
-  console.log("Current users:", users);
+  
 
-  // Reset the inputs state to clear the form
   setInputs({
     email: "",
     password: "",
@@ -39,7 +24,9 @@ export const handleCreateAccount = (inputs, setInputs, users, setUsers) => {
     cartItems: "",
     totalBill: "",
   });
-  console.log("Current state:", inputs);
+  
+  setShowSignUpLogin(false);
+
 };
 
 export const validateInput = (name, value, inputs, users) => {

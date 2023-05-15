@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { inputData } from './data';
-import { handleInputData, handleCreateAccount, validateInput } from './utilities/handleChanges';
+import { handleCreateAccount, validateInput } from './utilities/handleChanges';
 import InputBase from './InputBase';
 import './SignUp_Login.css';
 
-function SignUp_Login({ onClose }) {
+function SignUp_Login({ onClose, setShowSignUpLogin, users, setUsers }){
+  
   const [inputs, setInputs] = useState({
     email: '',
     password: '',
@@ -14,7 +15,6 @@ function SignUp_Login({ onClose }) {
     postalCode: '',
   });
 
-  const [users, setUsers] = useState([]);
   const [errors, setErrors] = useState({});
   const [isSignUp, setIsSignUp] = useState(true);
 
@@ -35,12 +35,9 @@ function SignUp_Login({ onClose }) {
   const handleFormSubmit = (event) => {
     event.preventDefault();
     const isValid = Object.values(errors).every((error) => error === '');
-    console.log(isValid, " : isValid")
-    console.log(inputs, ' : is inputs inside of handleFormSubmit')
     if (isValid) {
-      handleCreateAccount(inputs, setInputs, users, setUsers);
+      handleCreateAccount(inputs, setInputs, setUsers, setShowSignUpLogin);
     }
-    console.log(users, ": users");
   };
 
   const toggleMode = () => {
@@ -55,7 +52,7 @@ function SignUp_Login({ onClose }) {
     });
     setErrors({});
   };
-
+  
   return (
     <div className="auth-modal" id="sign-up-login-modal">
       <div className="logInOptions">

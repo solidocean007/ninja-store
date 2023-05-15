@@ -22,7 +22,7 @@ function ItemGrid({ cart, setCart }) {
           <h2>{name}</h2>
         </div>
         <div className="lion-price">
-          <h1>{price}</h1>
+          <h1>${price}</h1>
         </div>
         <div className="cart-btn">
           <button
