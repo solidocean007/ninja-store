@@ -8,12 +8,11 @@ export function handleQuantityChange(setCart, index, newQuantity) {
   });
 }
 
-export const handleCreateAccount = (inputs, setInputs, setUsers, setShowSignUpLogin) => {
+export const handleCreateAccount = (inputs, setInputs, setUsers, setShowSignUpLogin, setUserLoggedIn) => {
   const newUser = { ...inputs };
 
   setUsers((prevUsers) => [...prevUsers, newUser]);
   
-
   setInputs({
     email: "",
     password: "",
@@ -26,6 +25,7 @@ export const handleCreateAccount = (inputs, setInputs, setUsers, setShowSignUpLo
   });
   
   setShowSignUpLogin(false);
+  setUserLoggedIn(`${inputs.firstName} ${inputs.lastName}`);
 
 };
 

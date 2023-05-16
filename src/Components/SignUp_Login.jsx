@@ -4,7 +4,7 @@ import { handleCreateAccount, validateInput } from './utilities/handleChanges';
 import InputBase from './InputBase';
 import './SignUp_Login.css';
 
-function SignUp_Login({ onClose, setShowSignUpLogin, users, setUsers }){
+function SignUp_Login({ onClose, setShowSignUpLogin, users, setUsers, setUserLoggedIn }){
   
   const [inputs, setInputs] = useState({
     email: '',
@@ -32,7 +32,7 @@ function SignUp_Login({ onClose, setShowSignUpLogin, users, setUsers }){
     event.preventDefault();
     const isValid = Object.values(errors).every((error) => error === '');
     if (isValid) {
-      handleCreateAccount(inputs, setInputs, setUsers, setShowSignUpLogin);
+      handleCreateAccount(inputs, setInputs, setUsers, setShowSignUpLogin, setUserLoggedIn);
     }
   };
 

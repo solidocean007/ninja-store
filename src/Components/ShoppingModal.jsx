@@ -70,6 +70,7 @@ function ShoppingModal() {
             setShowSignUpLogin={setShowSignUpLogin}
             users={users}
             setUsers={setUsers}
+            setUserLoggedIn={setUserLoggedIn}
           />
         </div>
       )}
