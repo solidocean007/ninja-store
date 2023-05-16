@@ -5,6 +5,12 @@
   width: 70%;
 }
 
+.user-block {
+  display: flex;
+  align-items: center;
+  color: white;
+}
+
 .login-block {
   display: flex;
   justify-content: space-between;

@@ -7,19 +7,18 @@ import Title from "./Title";
 import ItemGrid from "./ItemGrid";
 import "./ShoppingModal.css";
 
-
 function ShoppingModal() {
   const [users, setUsers] = useState([]);
 
   const [cart, setCart] = useState([]);
   const [showCart, setShowCart] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [userLoggedIn, setUserLoggedIn] = useState("");
   const [showSignUpLogin, setShowSignUpLogin] = useState(false);
   const [subTotalBill, setSubTotalBill] = useState(0);
 
   const handleCloseSignUpLogin = () => {
     setShowSignUpLogin(false);
-  }
+  };
 
   // Function to handle opening the cart modal
   const handleCartButtonOnClick = () => {
@@ -31,17 +30,28 @@ function ShoppingModal() {
     setShowCart(false);
   };
 
+  // Function to set userLoggedIn to empty for signing out
+  const signOutUser = () => {
+    setUserLoggedIn("");
+  };
+
+  let buttonMessage = userLoggedIn ? "Sign out" : "Sign up / Login";
+
   return (
     <div className="store-front">
       <div className="login-header">
         <div className="title-block">
           <Title title="Voltron" />
         </div>
+        {userLoggedIn && (
+          <div className="user-block">Welcome {userLoggedIn}</div>
+        )}
         <div className="login-block">
           <div className="sign-up btn">
             <SignUpLogInButton
-              isLoggedIn={isLoggedIn}
+              title={buttonMessage}
               setShowSignUpLogin={setShowSignUpLogin}
+              onClick={userLoggedIn ? signOutUser : null}
             />
           </div>
           <div className="cart-box btn">
@@ -52,14 +62,14 @@ function ShoppingModal() {
 
       <ItemGrid cart={cart} setCart={setCart} />
 
-      {showSignUpLogin && (
+      {showSignUpLogin && !userLoggedIn && (
         <div className="login-signUp-modal">
           <div className="modal-overlay"></div>
-          <SignUp_Login 
-          onClose={handleCloseSignUpLogin} 
-          setShowSignUpLogin={setShowSignUpLogin}
-          users={users}
-          setUsers={setUsers}
+          <SignUp_Login
+            onClose={handleCloseSignUpLogin}
+            setShowSignUpLogin={setShowSignUpLogin}
+            users={users}
+            setUsers={setUsers}
           />
         </div>
       )}

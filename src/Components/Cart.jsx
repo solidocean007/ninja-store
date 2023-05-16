@@ -1,12 +1,15 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { handleQuantityChange } from "./utilities/handleChanges";
 import "./Cart.css";
 
 function Cart({ cart, setCart, onClose, subTotalBill, setSubTotalBill }) {
-  setSubTotalBill(cart.reduce(
-    (accumulator, { price, quantity }) => accumulator + price * quantity,
-    0
-  ));
+  useEffect(() => {
+    setSubTotalBill(cart.reduce(
+      (accumulator, { price, quantity }) => accumulator + price * quantity,
+      0
+    ));
+  }, [cart, setSubTotalBill]);
+  
 
   return (
     <div className="cart-modal" id="cart-container-modal">

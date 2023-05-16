@@ -18,10 +18,6 @@ function SignUp_Login({ onClose, setShowSignUpLogin, users, setUsers }){
   const [errors, setErrors] = useState({});
   const [isSignUp, setIsSignUp] = useState(true);
 
-  useEffect(() => {
-    console.log("Updated users:", users);
-  }, [users]);
-
   const handleBlur = ({ target: { name, value } }) => {
     const validationError = validateInput(name, value, inputs, users);
     setErrors((prevErrors) => ({ ...prevErrors, [name]: validationError }));
