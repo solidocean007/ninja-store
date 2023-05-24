@@ -5,16 +5,17 @@ import SignUp_Login from "./SignUp_Login";
 import Cart from "./Cart";
 import Title from "./Title";
 import ItemGrid from "./ItemGrid";
+import Ordering from "./Ordering/Ordering";
 import "./ShoppingModal.css";
 
 function ShoppingModal() {
   const [users, setUsers] = useState([]);
-
-  const [cart, setCart] = useState([]);
-  const [showCart, setShowCart] = useState(false);
+  const [cartItems, setCartItems] = useState([]);
   const [userLoggedIn, setUserLoggedIn] = useState("");
   const [showSignUpLogin, setShowSignUpLogin] = useState(false);
-  const [subTotalBill, setSubTotalBill] = useState(0);
+  
+  const [showShipping, setShowShipping] = useState(false);
+  const [showOrdering, setShowOrdering] = useState(false);
 
   const handleCloseSignUpLogin = () => {
     setShowSignUpLogin(false);
@@ -22,12 +23,8 @@ function ShoppingModal() {
 
   // Function to handle opening the cart modal
   const handleCartButtonOnClick = () => {
-    setShowCart(true);
-  };
-
-  // Function to handle closing the cart modal
-  const handleCloseCart = () => {
-    setShowCart(false);
+    setShowOrdering(true);
+    // setShowCart(true);
   };
 
   // Function to set userLoggedIn to empty for signing out
@@ -47,20 +44,21 @@ function ShoppingModal() {
           <div className="user-block">Welcome {userLoggedIn}</div>
         )}
         <div className="login-block">
-          <div className="sign-up btn">
+          <div className="sign-up">
             <SignUpLogInButton
               title={buttonMessage}
               setShowSignUpLogin={setShowSignUpLogin}
               onClick={userLoggedIn ? signOutUser : null}
             />
           </div>
-          <div className="cart-box btn">
-            <CartButton onClick={handleCartButtonOnClick} />
+          <div className="cart-box">
+            {cartItems.length > 0 ?  <CartButton onClick={handleCartButtonOnClick} /> : null}
+            
           </div>
         </div>
       </div>
 
-      <ItemGrid cart={cart} setCart={setCart} />
+      <ItemGrid cartItems={cartItems} setCartItems={setCartItems} />
 
       {showSignUpLogin && !userLoggedIn && (
         <div className="login-signUp-modal">
@@ -75,18 +73,16 @@ function ShoppingModal() {
         </div>
       )}
 
-      {showCart && (
-        <div>
-          <div className="modal-overlay"></div>
-          <Cart
-            cart={cart}
-            setCart={setCart}
-            onClose={handleCloseCart}
-            subTotalBill={subTotalBill}
-            setSubTotalBill={setSubTotalBill}
+      {showOrdering && (
+        <div className="ordering-modal">
+          <Ordering 
+            cartItems={cartItems}
+            setCartItems={setCartItems}
           />
         </div>
       )}
+
+      
     </div>
   );
 }

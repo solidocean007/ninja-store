@@ -1,0 +1,6 @@
+.progress-bar {
+  display: flex;
+  width: 100%;
+  background-color: aliceblue;
+  color: rgb(29, 8, 8);
+}

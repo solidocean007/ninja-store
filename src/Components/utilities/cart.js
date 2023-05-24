@@ -1,7 +1,12 @@
-export const handleCartUpdate = ({ image, name, price }, cart, setCart) => {
-  const existingItem = cart.find((cartItem) => cartItem.name === name);
+export const handleCartUpdate = ({ image, name, price }, cartItems, setCartItems) => {
+  const existingItem = cartItems.find((cartItem) => cartItem.name === name);
   const updatedCart = existingItem
-    ? cart.filter((cartItem) => cartItem.name !== name)
-    : [...cart, { image: image, name: name, price: price, quantity: 1}];
-    setCart(updatedCart);
+    ? cartItems.filter((cartItem) => cartItem.name !== name)
+    : [...cartItems, { image: image, name: name, price: price, quantity: 1}];
+    setCartItems(updatedCart);
 }
+
+// Function to handle closing the cart modal
+export const handleCloseCart = () => {
+  setShowCart(false);
+};
