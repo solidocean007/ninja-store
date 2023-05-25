@@ -1,4 +1,7 @@
 .card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   transition: transform 4s;
   cursor: pointer;
@@ -19,6 +22,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  padding: 15px;
 }
 
 .image-box {
@@ -30,21 +34,27 @@
   overflow: visible;
 }
 
+.details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .lion-header {
-  position: absolute;
+  /* position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, 50%);
   text-align: center;
   color: white;
   font-size: 20px;
-  font-weight: bold;
+  font-weight: bold; */
 }
 
 .lion-price {
-  position: absolute;
+  /* position: absolute;
   top: 55%;
-  left: 30%;
+  left: 30%; */
 }
 
 .buy-btn-div {

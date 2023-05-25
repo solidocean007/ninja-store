@@ -2,7 +2,6 @@ import { useState } from "react";
 import SignUpLogInButton from "./SignUpLogInButton";
 import CartButton from "./CartButton";
 import SignUp_Login from "./SignUp_Login";
-import Cart from "./Cart";
 import Title from "./Title";
 import ItemGrid from "./ItemGrid";
 import Ordering from "./Ordering/Ordering";
@@ -13,7 +12,6 @@ function ShoppingModal() {
   const [cartItems, setCartItems] = useState([]);
   const [userLoggedIn, setUserLoggedIn] = useState("");
   const [showSignUpLogin, setShowSignUpLogin] = useState(false);
-  
   const [showShipping, setShowShipping] = useState(false);
   const [showOrdering, setShowOrdering] = useState(false);
 
@@ -78,6 +76,7 @@ function ShoppingModal() {
           <Ordering 
             cartItems={cartItems}
             setCartItems={setCartItems}
+            onClose={() => setShowOrdering(false)}
           />
         </div>
       )}

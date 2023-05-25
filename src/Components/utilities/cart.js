@@ -5,8 +5,3 @@ export const handleCartUpdate = ({ image, name, price }, cartItems, setCartItems
     : [...cartItems, { image: image, name: name, price: price, quantity: 1}];
     setCartItems(updatedCart);
 }
-
-// Function to handle closing the cart modal
-export const handleCloseCart = () => {
-  setShowCart(false);
-};

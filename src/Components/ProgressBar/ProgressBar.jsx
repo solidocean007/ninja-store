@@ -1,11 +1,17 @@
-import { useState } from "react";
-import './ProgressBar.css';
+import "./ProgressBar.css";
 
 const ProgressBar = () => {
-
+  const barParts = ["Cart", "Shipping", "Payment", "Confirmation"];
   return (
-    <div className="progress-bar">Cart Shipping Payment Confirmation</div>
-  )
-}
+    <div className="progress-box">
+      {barParts.map((stage) => (
+        <div key={stage} className="stage-box">
+          <div className="p-Box">{stage}</div>
+          {stage !== barParts[barParts.length -1] && <div className="p-Bar"></div> }
+        </div>
+      ))}
+    </div>
+  );
+};
 
 export default ProgressBar;

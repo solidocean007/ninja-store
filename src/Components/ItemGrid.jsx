@@ -33,28 +33,29 @@ function ItemGrid({ cartItems, setCartItems }) {
               }}
             />
           </div>
-          <div className="lion-header">
-            <h2>{name}</h2>
-          </div>
-          <div className="lion-price">
-            <h1>${price}</h1>
-          </div>
-          <div className="buy-btn-div">
-            <button onClick={handleClick}>{buttonText}</button>
+          <div className="details">
+            <div className="lion-header">
+              <h2>{name}</h2>
+            </div>
+            <div className="lion-price">
+              <h1>${price}</h1>
+            </div>
+            <div className="buy-btn-div">
+              <button onClick={handleClick}>{buttonText}</button>
+            </div>
           </div>
         </div>
         <div className="back">
-    <img
-      src="/src/assets/legendary-voltron.jpg"
-      alt="Back"
-      style={{
-        width: '100%',
-        height: '100%',
-        objectFit: 'cover',
-      }}
-    />
-</div>
-
+          <img
+            src="/src/assets/legendary-voltron.jpg"
+            alt="Back"
+            style={{
+              width: "100%",
+              height: "100%",
+              objectFit: "cover",
+            }}
+          />
+        </div>
       </div>
     );
   };

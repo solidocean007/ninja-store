@@ -1,6 +1,46 @@
-.progress-bar {
+.progress-box {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
   width: 100%;
+  border-radius: 5px;
   background-color: aliceblue;
   color: rgb(29, 8, 8);
+  padding: 15px;
+  margin-bottom: 5px;
+}
+
+.stage-box {
+  display: flex;
+  align-items: center;
+}
+
+.p-Box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  width: 200px;
+  height: 45px;
+  border-radius: 10px;
+  letter-spacing: 1px;
+  background-color:cornsilk;
+  padding: 20px;
+}
+
+.activeBox {
+  background-color: chartreuse;
+  color: whitesmoke;
+  font-weight: 800;
+}
+
+.p-Bar {
+  width: 100%;
+  height: 10px;
+  background-color: aliceblue;
+}
+
+.active-segment {
+  background-color: chartreuse;
 }
