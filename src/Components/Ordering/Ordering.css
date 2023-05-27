@@ -1,5 +1,6 @@
 .order-window {
   display: flex;
+  /* height: 80%; */
   background-color: white;
   border-radius: 5px;
   padding: 5px;
@@ -7,10 +8,10 @@
 
 .stage-window {
   margin-right: 5px;
+  padding: 5px;
 }
 
 .summary-window {
   border-radius: 5px;
-  background-color:darkslategrey
-
+  background-color:darkslategrey;
 }

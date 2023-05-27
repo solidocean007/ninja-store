@@ -60,6 +60,7 @@ const Ordering = ({ cartItems, setCartItems, onClose }) => {
         <Summary
           cartItems={cartItems}
           setCartItems={setCartItems}
+          stage={stage}
           setStage={setStage}
         />
       </div>

@@ -1,0 +1,36 @@
+.cart-summary {
+  display: flex;
+  flex-direction: column;
+  height: 90%;
+  justify-content: space-between;
+  font-size: large;
+  border: 3px solid white;
+  border-radius: 5px;
+  margin: 5px;
+  padding: 10px;
+}
+
+.promo-box {
+  display: flex;
+  align-items: center;
+  max-width: 400px;
+  justify-content: space-between;
+}
+
+.promo-box button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: greenyellow;
+  border-color: rgb(151, 150, 206);
+  color: rgb(151, 150, 206);
+  padding: 3px;
+  width: 50px;
+  height: 30px;
+  margin: 10px;
+  font-size: x-small;
+}
+
+.summary-proceed-btn {
+  font-size: small;
+}

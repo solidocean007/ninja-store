@@ -73,21 +73,3 @@
   align-items: center;
   height: 10px;
 }
-
-.cart-summary {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  font-size: large;
-  border: 3px solid white;
-  border-radius: 5px;
-  margin: 5px;
-  padding: 10px;
-}
-
-.promo-box {
-  display: flex;
-  align-items: center;
-  max-width: 400px;
-  justify-content: space-between;
-}

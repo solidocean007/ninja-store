@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { inputData } from './data';
-import { handleCreateAccount, validateInput } from './utilities/handleChanges';
+import { handleInput, validateInput, handleFormSubmit } from './utilities/handleChanges';
 import InputBase from './InputBase';
 import './SignUp_Login.css';
 
 function SignUp_Login({ onClose, setShowSignUpLogin, users, setUsers, setUserLoggedIn }){
-  
+  const [errors, setErrors] = useState({});
+
+
   const [inputs, setInputs] = useState({
     email: '',
     password: '',
@@ -15,27 +17,13 @@ function SignUp_Login({ onClose, setShowSignUpLogin, users, setUsers, setUserLog
     postalCode: '',
   });
 
-  const [errors, setErrors] = useState({});
   const [isSignUp, setIsSignUp] = useState(true);
 
   const handleBlur = ({ target: { name, value } }) => {
     const validationError = validateInput(name, value, inputs, users);
     setErrors((prevErrors) => ({ ...prevErrors, [name]: validationError }));
   };
-
-  const handleInput = (event) => {
-    const { name, value } = event.target;
-    setInputs((oldValues) => ({ ...oldValues, [name]: value }));
-  };
   
-  const handleFormSubmit = (event) => {
-    event.preventDefault();
-    const isValid = Object.values(errors).every((error) => error === '');
-    if (isValid) {
-      handleCreateAccount(inputs, setInputs, setUsers, setShowSignUpLogin, setUserLoggedIn);
-    }
-  };
-
   const toggleMode = () => {
     setIsSignUp((prevMode) => !prevMode);
     setInputs({
@@ -69,7 +57,7 @@ function SignUp_Login({ onClose, setShowSignUpLogin, users, setUsers, setUserLog
               placeholder={item.label}
               type={item.type}
               value={inputs[item.name]}
-              onChange={handleInput}
+              onChange={handleInput(setInputs)}
               name={item.name}
               onBlur={handleBlur}
               error={errors[item.name]}

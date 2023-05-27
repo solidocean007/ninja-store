@@ -2,8 +2,23 @@ import { useState, useEffect } from "react";
 import InputBase from '../InputBase.jsx';
 import ButtonBase from "../ButtonBase/ButtonBase.jsx";
 
-const Summary = ({ cartItems, setStage }) => {
+import './Summary.css';
+
+const Summary = ({ cartItems, setCartItems, stage, setStage }) => {
   const [subTotalBill, setSubTotalBill] = useState(0);
+
+  const getButtonTitle = () => {
+    switch (stage) {
+      case 0:
+        return "Proceed to Shipping";
+      case 1:
+        return "Proceed to Payment";
+      case 2:
+        return "Finish Order";
+      default:
+        return "";
+    }
+  };
 
   useEffect(() => {
     setSubTotalBill(
@@ -25,7 +40,9 @@ const Summary = ({ cartItems, setStage }) => {
             <div className="Sub-total">Subtotal: ${subTotalBill}</div>
           </div>
           <div>Shipping -</div>
-          <div><ButtonBase onClick={() => setStage((stage) => stage + 1)} buttonTitle={'Checkout'} /></div>
+          <div className="summary-proceed-btn">
+            <ButtonBase onClick={() => setStage((stage) => stage + 1)} buttonTitle={getButtonTitle()} />
+          </div>
         </div>
   );
 }
