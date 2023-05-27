@@ -12,7 +12,6 @@ function ShoppingModal() {
   const [cartItems, setCartItems] = useState([]);
   const [userLoggedIn, setUserLoggedIn] = useState("");
   const [showSignUpLogin, setShowSignUpLogin] = useState(false);
-  const [showShipping, setShowShipping] = useState(false);
   const [showOrdering, setShowOrdering] = useState(false);
 
   const handleCloseSignUpLogin = () => {
@@ -72,7 +71,7 @@ function ShoppingModal() {
       )}
 
       {showOrdering && (
-        <div className="ordering-modal">
+        <div className="modal-overlay">
           <Ordering 
             cartItems={cartItems}
             setCartItems={setCartItems}

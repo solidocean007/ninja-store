@@ -1,27 +1,8 @@
-import { useEffect, useState } from "react";
 import { handleQuantityChange } from "./utilities/handleChanges";
-import InputBase from "./InputBase";
 import "./Cart.css";
-import ShippingModal from "./Shipping/ShippingModal";
 import ButtonBase from "./ButtonBase/ButtonBase";
 
-function Cart({ cartItems, setCartItems, onClose }) {
-
-  const [subTotalBill, setSubTotalBill] = useState(0);
-
-  useEffect(() => {
-    setSubTotalBill(
-      cartItems.reduce(
-        (accumulator, { price, quantity }) => accumulator + price * quantity,
-        0
-      )
-    );
-  }, [cartItems, setSubTotalBill]);
-
-  const goToShipping = () => {
-    onClose();
-    return <ShippingModal />
-  }
+function Cart({ cartItems, setCartItems, onClick, onClose }) {
 
   return (
     <>
@@ -77,18 +58,7 @@ function Cart({ cartItems, setCartItems, onClose }) {
         </div>
       </div>
       <div className="cart-right">
-        <div className="cart-summary">
-          <div>
-            <div className="summary-header">Summary</div>
-            <div className="promo-box">
-              Promo: <InputBase />
-              <button>Apply</button>
-            </div>
-            <div className="Sub-total">Subtotal: ${subTotalBill}</div>
-          </div>
-          <div>Shipping -</div>         
-          <div><ButtonBase onClick={goToShipping} buttonTitle={'Checkout'} /></div>
-        </div>
+        
       </div>
     </div>
     </>

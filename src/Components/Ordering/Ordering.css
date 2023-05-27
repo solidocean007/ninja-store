@@ -1,18 +1,16 @@
-.ordering-modal {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-}
-
-
 .order-window {
   display: flex;
-  flex-direction: column;
-  /* align-items: center; */
-  position: relative;
+  background-color: white;
+  border-radius: 5px;
+  padding: 5px;
+}
+
+.stage-window {
+  margin-right: 5px;
+}
+
+.summary-window {
+  border-radius: 5px;
+  background-color:darkslategrey
+
 }
