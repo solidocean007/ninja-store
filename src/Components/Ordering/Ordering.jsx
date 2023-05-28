@@ -9,6 +9,7 @@ import Summary from "../Summary/Summary";
 
 const Ordering = ({ cartItems, setCartItems, onClose }) => {
   const [stage, setStage] = useState(0);
+  const [formIsValid, setFormIsValid] = useState(false);
 
   function renderStage() {
     switch (stage) {
@@ -26,6 +27,7 @@ const Ordering = ({ cartItems, setCartItems, onClose }) => {
             cartItems={cartItems}
             setCartItems={setCartItems}
             onClose={onClose}
+            setFormIsValid={setFormIsValid}
           />
         );
       case 2:
@@ -34,6 +36,7 @@ const Ordering = ({ cartItems, setCartItems, onClose }) => {
             cartItems={cartItems}
             setCartItems={setCartItems}
             onClose={onClose}
+            setFormIsValid={setFormIsValid}
           />
         );
       case 3:
@@ -54,7 +57,7 @@ const Ordering = ({ cartItems, setCartItems, onClose }) => {
     <div className="order-window">
       <div className="stage-window">
         <ProgressBar stage={stage} />
-        <div>{renderStage()}</div>
+        <div className="stage-panel">{renderStage()}</div>
       </div>
       <div className="summary-window">
         <Summary
@@ -62,6 +65,7 @@ const Ordering = ({ cartItems, setCartItems, onClose }) => {
           setCartItems={setCartItems}
           stage={stage}
           setStage={setStage}
+          formIsValid={formIsValid}
         />
       </div>
     </div>

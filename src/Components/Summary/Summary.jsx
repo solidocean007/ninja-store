@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
-import InputBase from '../InputBase.jsx';
+import InputBase from "../InputBase.jsx";
 import ButtonBase from "../ButtonBase/ButtonBase.jsx";
 
-import './Summary.css';
+import "./Summary.css";
 
-const Summary = ({ cartItems, setCartItems, stage, setStage }) => {
+const Summary = ({ cartItems, setCartItems, stage, setStage, formIsValid }) => {
   const [subTotalBill, setSubTotalBill] = useState(0);
+  console.log(formIsValid, " : formIsValid")
 
   const getButtonTitle = () => {
     switch (stage) {
@@ -27,24 +28,28 @@ const Summary = ({ cartItems, setCartItems, stage, setStage }) => {
         0
       )
     );
-  }, [cartItems, setSubTotalBill]);       
+  }, [cartItems, setSubTotalBill]);
 
   return (
     <div className="cart-summary">
-          <div>
-            <div className="summary-header">Summary</div>
-            <div className="promo-box">
-              Promo: <InputBase />
-              <button>Apply</button>
-            </div>
-            <div className="Sub-total">Subtotal: ${subTotalBill}</div>
-          </div>
-          <div>Shipping -</div>
-          <div className="summary-proceed-btn">
-            <ButtonBase onClick={() => setStage((stage) => stage + 1)} buttonTitle={getButtonTitle()} />
-          </div>
+      <div>
+        <div className="summary-header">Summary</div>
+        <div className="promo-box">
+          Promo: <InputBase />
+          <button>Apply</button>
         </div>
+        <div className="Sub-total">Subtotal: ${subTotalBill}</div>
+      </div>
+      <div>Shipping -</div>
+      <div className="summary-proceed-btn">
+        <ButtonBase
+          onClick={() => setStage((stage) => stage + 1)}
+          buttonTitle={getButtonTitle()}
+          disabled={!formIsValid && stage === 1}
+        />
+      </div>
+    </div>
   );
-}
+};
 
 export default Summary;
