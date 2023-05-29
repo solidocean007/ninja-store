@@ -31,6 +31,15 @@
   font-size: x-small;
 }
 
+
+button:disabled {
+  background-color: #cccccc;
+  color: #888888;
+  cursor: not-allowed;
+}
+
+
 .summary-proceed-btn {
   font-size: small;
 }
+

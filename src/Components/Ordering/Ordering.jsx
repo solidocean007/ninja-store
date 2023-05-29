@@ -1,5 +1,5 @@
 import { useState } from "react";
-import Cart from "../Cart";
+import Cart from "../Cart/Cart";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import "./Ordering.css";
 import ShippingModal from "../Shipping/ShippingModal";

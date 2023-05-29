@@ -1,6 +1,6 @@
 import { useState } from "react";
 import SignUpLogInButton from "./SignUpLogInButton";
-import CartButton from "./CartButton";
+import CartButton from "./Cart/CartButton";
 import SignUp_Login from "./SignUp_Login";
 import Title from "./Title";
 import ItemGrid from "./ItemGrid";

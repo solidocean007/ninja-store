@@ -5,12 +5,9 @@ import { handleInput, validateInput } from "../utilities/handleChanges";
 import { countries } from "./shipping_data";
 import { states } from "./state_data";
 import { address_data } from "./address_data";
+import ShipMethod from "./Ship_Method/ShipMethod";
 
-const ShippingModal = ({setFormIsValid, ...otherProps}) => {
-
-  console.log(setFormIsValid, " : setFormIsValid")
-  
-
+const ShippingModal = ({ setFormIsValid, ...otherProps }) => {
   const [errors, setErrors] = useState({});
   const [addressInputs, setAddressInputs] = useState({
     WholeName: "",
@@ -22,27 +19,35 @@ const ShippingModal = ({setFormIsValid, ...otherProps}) => {
     state: "",
   });
 
-  const [expressShip, setExpressShip] = useState(false);
+  const handleShippingMethod = (method) => {
+    if (method === "express") {
+      setShippingCost(20);
+    } else {
+      setShippingCost(0);
+    }
+  };
 
   const handleBlur = (event) => {
     const { name, value } = event.target;
     const validationError = validateInput(name, value, addressInputs);
-  
+
     setErrors((prevErrors) => {
       const updatedErrors = { ...prevErrors, [name]: validationError };
-  
+
       // Check if all fields are filled and have no errors
-      const allFieldsFilled = Object.values(addressInputs).every((input) => input !== "");
-      const noErrors = Object.values(updatedErrors).every((error) => error === "");
-  
+      const allFieldsFilled = Object.values(addressInputs).every(
+        (input) => input !== ""
+      );
+      const noErrors = Object.values(updatedErrors).every(
+        (error) => error === ""
+      );
+
       // If all fields are filled and there are no errors, the form is valid
       setFormIsValid(allFieldsFilled && noErrors);
-  
+
       return updatedErrors;
     });
   };
-  
-  
 
   return (
     <div className="shipment-modal">
@@ -97,6 +102,9 @@ const ShippingModal = ({setFormIsValid, ...otherProps}) => {
                 </option>
               ))}
             </select>
+          </div>
+          <div className="ship-method-panel">
+            <ShipMethod handleShippingMethod={handleShippingMethod} />
           </div>
         </div>
       </form>
