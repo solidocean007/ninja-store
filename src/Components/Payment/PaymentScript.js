@@ -21,3 +21,4 @@ export const validateCardInput = (name, value, inputs) => {
 
   return errorMessage;
 };
+
