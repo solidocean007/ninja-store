@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Cart from "../Cart/Cart";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import "./Ordering.css";
@@ -10,6 +10,16 @@ import Summary from "../Summary/Summary";
 const Ordering = ({ cartItems, setCartItems, onClose }) => {
   const [stage, setStage] = useState(0);
   const [formIsValid, setFormIsValid] = useState(false);
+  const [subTotalBill, setSubTotalBill] = useState(0);
+
+  useEffect(() => {
+    setSubTotalBill(
+      cartItems.reduce(
+        (accumulator, { price, quantity }) => accumulator + price * quantity,
+        0
+      )
+    );
+  }, [cartItems, setSubTotalBill]);
 
   function renderStage() {
     switch (stage) {
@@ -66,6 +76,7 @@ const Ordering = ({ cartItems, setCartItems, onClose }) => {
           stage={stage}
           setStage={setStage}
           formIsValid={formIsValid}
+          subTotalBill={subTotalBill}
         />
       </div>
     </div>

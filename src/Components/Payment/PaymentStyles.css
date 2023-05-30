@@ -1,0 +1,16 @@
+.payment-info { 
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  height: 30px;
+  margin-top: 10px;
+  color: blue;
+  
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}

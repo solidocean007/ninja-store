@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import InputBase from "../InputBase";
 import { handleInput } from "../utilities/handleChanges";
 import { validateCardInput } from "./PaymentScript";
+import "./PaymentStyles.css";
 
 const PaymentScreen = () => {
   const [errors, setErrors] = useState({});
@@ -30,7 +31,7 @@ const PaymentScreen = () => {
 
       <form>
         <div className="form-group">
-          <div className="card-holder-div">
+          <div className="cardForm-field">
             <label>Card Holder Name</label>
             <InputBase
               value={paymentInputs.cardHolderName}
@@ -42,7 +43,7 @@ const PaymentScreen = () => {
               <div className="error-div">{errors.cardHolderName}</div>
             )}
           </div>
-          <div className="card-number-div">
+          <div className="cardForm-field">
             <label>Card number</label>
             <InputBase
               value={paymentInputs.cardNumber}
@@ -50,17 +51,18 @@ const PaymentScreen = () => {
               name="cardNumber"
               onBlur={handleBlur}
             />
-            {errors.cardHolderName && (
-              <div className="error-div">{errors.cardHolderName}</div>
+            {errors.cardNumber && (
+              <div className="error-div">{errors.cardNumber}</div>
             )}
           </div>
-          <div className="card-month-expiry-div">
+          <div className="cardForm-field">
             <label htmlFor="expiry-month">Month</label>
             <select
-              name="expiry-month"
+              name="cardExpMonth"
               id="expiry-month"
               value={paymentInputs.cardExpMonth}
               onChange={handleInput(setPaymentInputs)}
+              onBlur={handleBlur}
             >
               {cardMonth.map((month, index) => (
                 <option key={index} value={month}>
@@ -70,13 +72,14 @@ const PaymentScreen = () => {
             </select>
           </div>
 
-          <div className="card-year-expiry-div">
+          <div className="cardForm-field">
             <label htmlFor="expiry-year">Year</label>
             <select
-              name="expiry-year"
+              name="cardExpYear"
               id="expiry-year"
               value={paymentInputs.cardExpYear}
               onChange={handleInput(setPaymentInputs)}
+              onBlur={handleBlur}
             >
               {years.map((year, index) => (
                 <option key={index} value={year}>
@@ -85,6 +88,21 @@ const PaymentScreen = () => {
               ))}
             </select>
           </div>
+          <div className="cardForm-field">
+            <label>CVV</label>
+            <InputBase
+              value={paymentInputs.cardCVV}
+              onChange={handleInput(setPaymentInputs)}
+              name="cardCVV"
+              onBlur={handleBlur}
+            />
+            {errors.cardCVV && (
+              <div className="error-div">{errors.cardCVV}</div>
+            )}
+          </div>
+        </div>
+        <div className="submit-panel">
+          <input type="submit" value="Pay" />
         </div>
       </form>
     </div>

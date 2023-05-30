@@ -4,9 +4,7 @@ import ButtonBase from "../ButtonBase/ButtonBase.jsx";
 
 import "./Summary.css";
 
-const Summary = ({ cartItems, setCartItems, stage, setStage, formIsValid }) => {
-  const [subTotalBill, setSubTotalBill] = useState(0);
-  console.log(formIsValid, " : formIsValid")
+const Summary = ({ cartItems, setCartItems, stage, setStage, formIsValid, subTotalBill }) => {
 
   const getButtonTitle = () => {
     switch (stage) {
@@ -21,14 +19,7 @@ const Summary = ({ cartItems, setCartItems, stage, setStage, formIsValid }) => {
     }
   };
 
-  useEffect(() => {
-    setSubTotalBill(
-      cartItems.reduce(
-        (accumulator, { price, quantity }) => accumulator + price * quantity,
-        0
-      )
-    );
-  }, [cartItems, setSubTotalBill]);
+  
 
   return (
     <div className="cart-summary">

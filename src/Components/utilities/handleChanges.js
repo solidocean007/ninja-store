@@ -1,5 +1,9 @@
 export const handleInput = (setInputs) => (event) => {
   const { name, value } = event.target;
+  if (name === 'cardCVV' && value.length > 4) {
+    return;
+  }
+  
   setInputs((oldValues) => ({ ...oldValues, [name]: value }));
 };
 

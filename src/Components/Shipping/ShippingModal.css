@@ -3,8 +3,6 @@
   height: 100%;
 }
 
-form > div { height: 500px;}
-
 .shipping-details {
   display: flex;
   flex-direction: column;
@@ -24,7 +22,7 @@ form > div { height: 500px;}
 
 .address-details {
   display: flex;
-  flex-direction: column;
+  /* flex-direction: column; */
   justify-content: space-between;
   height: 2rem;
   width: 300px;
