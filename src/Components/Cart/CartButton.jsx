@@ -1,11 +1,10 @@
-// CartButton.jsx
+function CartButton({ userLoggedIn, setShowOrdering, setShowSignUpLogin }) {
+  // Go to ordering or go to SignUp/login
+  const handleCartButtonOnClick = () => {
+    userLoggedIn ? setShowOrdering(true) : setShowSignUpLogin(true);
+  };
 
-import React from 'react';
-
-function CartButton(props) {
-  return (
-    <button onClick={props.onClick}>Cart</button>
-  );
+  return <button onClick={handleCartButtonOnClick}>Cart</button>;
 }
 
 export default CartButton;

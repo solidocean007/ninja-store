@@ -8,30 +8,11 @@ import Ordering from "./Ordering/Ordering";
 import "./ShoppingModal.css";
 
 function ShoppingModal() {
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState([]); // For holding names of users
   const [cartItems, setCartItems] = useState([]);
-  const [userLoggedIn, setUserLoggedIn] = useState("");
+  const [userLoggedIn, setUserLoggedIn] = useState(""); // The name of the current user logged in.
   const [showSignUpLogin, setShowSignUpLogin] = useState(false);
   const [showOrdering, setShowOrdering] = useState(false);
-
-  const handleCloseSignUpLogin = () => {
-    setShowSignUpLogin(false);
-  };
-
-  // Function to handle opening the cart modal
-  const handleCartButtonOnClick = () => {
-    userLoggedIn ?
-    setShowOrdering(true):
-    setShowSignUpLogin(true);
-    // setShowCart(true);
-  };
-
-  // Function to set userLoggedIn to empty for signing out
-  const signOutUser = () => {
-    setUserLoggedIn("");
-  };
-
-  let buttonMessage = userLoggedIn ? "Sign out" : "Sign up / Login";
 
   return (
     <div className="store-front">
@@ -45,14 +26,19 @@ function ShoppingModal() {
         <div className="login-block">
           <div className="sign-up">
             <SignUpLogInButton
-              title={buttonMessage}
+              userLoggedIn={userLoggedIn}
               setShowSignUpLogin={setShowSignUpLogin}
-              onClick={userLoggedIn ? signOutUser : null}
+              setUserLoggedIn={setUserLoggedIn}
             />
           </div>
           <div className="cart-box">
-            {cartItems.length > 0 ?  <CartButton onClick={handleCartButtonOnClick} /> : null}
-            
+            {cartItems.length > 0 ? (
+              <CartButton
+                userLoggedIn={userLoggedIn}
+                setShowOrdering={setShowOrdering}
+                setShowSignUpLogin={setShowSignUpLogin}
+              />
+            ) : null}
           </div>
         </div>
       </div>
@@ -63,7 +49,6 @@ function ShoppingModal() {
         <div className="login-signUp-modal">
           <div className="modal-overlay"></div>
           <SignUp_Login
-            onClose={handleCloseSignUpLogin}
             setShowSignUpLogin={setShowSignUpLogin}
             users={users}
             setUsers={setUsers}
@@ -74,15 +59,13 @@ function ShoppingModal() {
 
       {showOrdering && userLoggedIn && (
         <div className="modal-overlay">
-          <Ordering 
+          <Ordering
             cartItems={cartItems}
             setCartItems={setCartItems}
             onClose={() => setShowOrdering(false)}
           />
         </div>
       )}
-
-      
     </div>
   );
 }

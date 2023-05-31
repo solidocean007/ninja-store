@@ -29,7 +29,7 @@ const PaymentScreen = ({ setStage }) => {
     <div className="payment-info">
       <h2>Payment Information</h2>
 
-      <form onSubmit={(event) => handlePaymentSubmit(event, { errors, setPaymentInputs, setErrors, setStage })}>
+      <form onSubmit={(event) => handlePaymentSubmit(event, { errors, setPaymentInputs, setErrors, setStage, fullTotal })}>
 
         <div className="form-group">
           <div className="cardForm-field">
@@ -108,7 +108,7 @@ const PaymentScreen = ({ setStage }) => {
           </div>
         </div>
         <div className="submit-panel">
-          <input type="submit" value="Pay" />
+          <input type="submit" value={`Pay $${fullTotal}`} />
         </div>
       </form>
     </div>

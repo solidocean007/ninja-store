@@ -1,17 +1,17 @@
 import React from "react";
 
-function SignUpLogInButton({ title, setShowSignUpLogin, onClick }) {
+const SignUpLogInButton = ({
+  userLoggedIn,
+  setShowSignUpLogin,
+  setUserLoggedIn,
+}) => {
+  const buttonMessage = userLoggedIn ? "Sign out" : "Sign up / Login";
+
   const handleClick = () => {
-    if (onClick) {
-      onClick(); // Call the onClick function if it's provided
-    } else {
-      setShowSignUpLogin(true); // Open the SignUp_Login component if onClick is not provided
-    }
+    userLoggedIn ? setUserLoggedIn("") : setShowSignUpLogin(true);
   };
 
-  return (
-    <button onClick={handleClick}>{title}</button>
-  );
-}
+  return <button onClick={handleClick}>{buttonMessage}</button>;
+};
 
 export default SignUpLogInButton;

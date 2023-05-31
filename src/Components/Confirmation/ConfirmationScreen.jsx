@@ -1,7 +1,14 @@
 import React from "react";
 import ButtonBase from "../ButtonBase/ButtonBase";
 
-const ConfirmationScreen = ({ onFinish }) => {
+const ConfirmationScreen = () => {
+
+  const onFinish = () => {
+    console.log("finish");
+    setStage(0);
+    setCartItems([]);
+    onClose();
+  };
 
   return (
     <div className="confirmation-block">

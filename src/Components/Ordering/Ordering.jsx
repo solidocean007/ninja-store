@@ -75,13 +75,6 @@ const Ordering = ({ cartItems, setCartItems, onClose }) => {
     }
   }
 
-  const onFinish = () => {
-    console.log("finish");
-    setStage(0);
-    setCartItems([]);
-    onClose();
-  };
-
   return (
     <div className="order-window">
       <div className="stage-window">
