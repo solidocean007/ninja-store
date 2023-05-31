@@ -131,3 +131,25 @@ export const handleFormSubmit = (event,{ errors, inputs, setInputs, setUsers, se
     );
   }
 };
+
+export const handlePaymentSubmit = (event, { errors, setPaymentInputs, setErrors, setStage }) => {
+  event.preventDefault();
+  const isValid = Object.values(errors).every((error) => error === "");
+  if(isValid) {
+    // process payment logic would go here.
+
+    // clear payment input states
+    setPaymentInputs({
+      cardHolderName: "",
+      cardNumber: "",
+      cardExpMonth: "",
+      cardExpYear: "",
+      cardCVV: "",
+    });
+
+    // clear errors
+    setErrors({});
+    setStage((stage) => stage + 1)
+  }
+
+}

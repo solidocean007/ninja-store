@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import InputBase from "../InputBase";
-import { handleInput } from "../utilities/handleChanges";
+import { handlePaymentSubmit, handleInput } from "../utilities/handleChanges";
 import { validateCardInput } from "./PaymentScript";
 import "./PaymentStyles.css";
 
-const PaymentScreen = () => {
+const PaymentScreen = ({ setStage }) => {
   const [errors, setErrors] = useState({});
   const [paymentInputs, setPaymentInputs] = useState({
     cardHolderName: "",
@@ -29,14 +29,16 @@ const PaymentScreen = () => {
     <div className="payment-info">
       <h2>Payment Information</h2>
 
-      <form>
+      <form onSubmit={(event) => handlePaymentSubmit(event, { errors, setPaymentInputs, setErrors, setStage })}>
+
         <div className="form-group">
           <div className="cardForm-field">
-            <label>Card Holder Name</label>
+            <label html='cardHolderName'>Card Holder Name</label>
             <InputBase
               value={paymentInputs.cardHolderName}
               onChange={handleInput(setPaymentInputs)}
               name="cardHolderName"
+              id="cardHolderName"
               onBlur={handleBlur}
             />
             {errors.cardHolderName && (
@@ -44,11 +46,12 @@ const PaymentScreen = () => {
             )}
           </div>
           <div className="cardForm-field">
-            <label>Card number</label>
+            <label html='cardNumber'>Card number</label>
             <InputBase
               value={paymentInputs.cardNumber}
               onChange={handleInput(setPaymentInputs)}
               name="cardNumber"
+              id="cardNumber"
               onBlur={handleBlur}
             />
             {errors.cardNumber && (
@@ -64,6 +67,7 @@ const PaymentScreen = () => {
               onChange={handleInput(setPaymentInputs)}
               onBlur={handleBlur}
             >
+              <option value="">Month</option>
               {cardMonth.map((month, index) => (
                 <option key={index} value={month}>
                   {month}
@@ -81,6 +85,7 @@ const PaymentScreen = () => {
               onChange={handleInput(setPaymentInputs)}
               onBlur={handleBlur}
             >
+              <option value="">Year</option>
               {years.map((year, index) => (
                 <option key={index} value={year}>
                   {year}
@@ -89,11 +94,12 @@ const PaymentScreen = () => {
             </select>
           </div>
           <div className="cardForm-field">
-            <label>CVV</label>
+            <label htmlFor="cardCVV">CVV</label>
             <InputBase
               value={paymentInputs.cardCVV}
               onChange={handleInput(setPaymentInputs)}
               name="cardCVV"
+              id="cardCVV"
               onBlur={handleBlur}
             />
             {errors.cardCVV && (

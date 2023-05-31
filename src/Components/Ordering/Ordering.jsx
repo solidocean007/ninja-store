@@ -60,6 +60,7 @@ const Ordering = ({ cartItems, setCartItems, onClose }) => {
       case 2:
         return (
           <PaymentScreen
+            setStage={setStage}
             cartItems={cartItems}
             setCartItems={setCartItems}
             onClose={onClose}
