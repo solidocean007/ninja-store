@@ -11,6 +11,19 @@ const Ordering = ({ cartItems, setCartItems, onClose }) => {
   const [stage, setStage] = useState(0);
   const [formIsValid, setFormIsValid] = useState(false);
   const [subTotalBill, setSubTotalBill] = useState(0);
+  const [shippingCost, setShippingCost] = useState(0);
+  const [method, setMethod] = useState("standard");
+  const [fullTotal, setFullTotal] = useState(0);
+
+  const calculateBill = () => {
+    return subTotalBill + shippingCost;
+  };
+  
+
+  useEffect(() => {
+    setFullTotal(calculateBill());
+  }, [subTotalBill, shippingCost]);
+  
 
   useEffect(() => {
     setSubTotalBill(
@@ -38,6 +51,10 @@ const Ordering = ({ cartItems, setCartItems, onClose }) => {
             setCartItems={setCartItems}
             onClose={onClose}
             setFormIsValid={setFormIsValid}
+            method={method}
+            setMethod={setMethod}
+            setShippingCost={setShippingCost}
+
           />
         );
       case 2:
@@ -47,6 +64,7 @@ const Ordering = ({ cartItems, setCartItems, onClose }) => {
             setCartItems={setCartItems}
             onClose={onClose}
             setFormIsValid={setFormIsValid}
+            fullTotal={fullTotal}
           />
         );
       case 3:
@@ -77,6 +95,8 @@ const Ordering = ({ cartItems, setCartItems, onClose }) => {
           setStage={setStage}
           formIsValid={formIsValid}
           subTotalBill={subTotalBill}
+          shippingCost={shippingCost}
+          fullTotal={fullTotal}
         />
       </div>
     </div>

@@ -1,7 +1,4 @@
-import { useState } from "react";
-
-const ShipMethod = () => {
-  const [method, setMethod] = useState("standard");
+const ShipMethod = ({ handleShippingMethod, method, setMethod, setStage, stage }) => {
 
   const handleChange = (e) => {
     setMethod(e.target.value);

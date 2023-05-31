@@ -44,7 +44,7 @@ function SignUp_Login({ onClose, setShowSignUpLogin, users, setUsers, setUserLog
         <button onClick={onClose}>CLOSE</button>
       </div>
 
-      <form onSubmit={handleFormSubmit}>
+      <form onSubmit={(event) => handleFormSubmit(event, { errors, inputs, setInputs, setUsers, setShowSignUpLogin, setUserLoggedIn })}>
         {inputData.map((item) => {
           if (!isSignUp && item.name === 'passwordConfirm') {
             return null;

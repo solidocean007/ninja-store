@@ -4,7 +4,7 @@ import ButtonBase from "../ButtonBase/ButtonBase.jsx";
 
 import "./Summary.css";
 
-const Summary = ({ cartItems, setCartItems, stage, setStage, formIsValid, subTotalBill }) => {
+const Summary = ({ cartItems, setCartItems, stage, setStage, formIsValid, subTotalBill, shippingCost, fullTotal }) => {
 
   const getButtonTitle = () => {
     switch (stage) {
@@ -19,7 +19,6 @@ const Summary = ({ cartItems, setCartItems, stage, setStage, formIsValid, subTot
     }
   };
 
-  
 
   return (
     <div className="cart-summary">
@@ -31,7 +30,8 @@ const Summary = ({ cartItems, setCartItems, stage, setStage, formIsValid, subTot
         </div>
         <div className="Sub-total">Subtotal: ${subTotalBill}</div>
       </div>
-      <div>Shipping -</div>
+      <div>Shipping ${shippingCost}-</div>
+      <div>Total: ${fullTotal}</div>
       <div className="summary-proceed-btn">
         <ButtonBase
           onClick={() => setStage((stage) => stage + 1)}

@@ -29,11 +29,14 @@
   padding: 20px;
 }
 
-.activeBox {
-  background-color: chartreuse;
-  color: whitesmoke;
+.p-Box.active, .p-Bar.active {
+  background-color: green;
+  color: white;
   font-weight: 800;
+  font-size: large;
+  letter-spacing: 3px;
 }
+
 
 .p-Bar {
   width: 100%;

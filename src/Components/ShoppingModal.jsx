@@ -20,7 +20,9 @@ function ShoppingModal() {
 
   // Function to handle opening the cart modal
   const handleCartButtonOnClick = () => {
-    setShowOrdering(true);
+    userLoggedIn ?
+    setShowOrdering(true):
+    setShowSignUpLogin(true);
     // setShowCart(true);
   };
 
@@ -70,7 +72,7 @@ function ShoppingModal() {
         </div>
       )}
 
-      {showOrdering && (
+      {showOrdering && userLoggedIn && (
         <div className="modal-overlay">
           <Ordering 
             cartItems={cartItems}

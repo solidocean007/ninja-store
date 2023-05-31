@@ -1,13 +1,14 @@
 import "./ProgressBar.css";
 
-const ProgressBar = () => {
+const ProgressBar = ({ stage }) => {
   const barParts = ["Cart", "Shipping", "Payment", "Confirmation"];
+  console.log(stage);
   return (
     <div className="progress-box">
-      {barParts.map((stage) => (
-        <div key={stage} className="stage-box">
-          <div className="p-Box">{stage}</div>
-          {stage !== barParts[barParts.length -1] && <div className="p-Bar"></div> }
+      {barParts.map((barPart, index) => (
+        <div key={barPart} className='stage-box'>
+          <div className={`p-Box ${stage >= index ? 'active' : ''}`}>{barPart}</div>
+          {stage !== barParts[barParts.length -1] && <div className={`p-Bar ${stage >= index + 1 ? 'active' : ''}`}></div> }
         </div>
       ))}
     </div>

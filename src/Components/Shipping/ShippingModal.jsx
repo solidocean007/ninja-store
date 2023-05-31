@@ -7,7 +7,7 @@ import { states } from "./state_data";
 import { address_data } from "./address_data";
 import ShipMethod from "./Ship_Method/ShipMethod";
 
-const ShippingModal = ({ setFormIsValid, ...otherProps }) => {
+const ShippingModal = ({ setFormIsValid, method, setMethod, setShippingCost, ...otherProps }) => {
   const [errors, setErrors] = useState({});
   const [addressInputs, setAddressInputs] = useState({
     WholeName: "",
@@ -19,35 +19,41 @@ const ShippingModal = ({ setFormIsValid, ...otherProps }) => {
     state: "",
   });
 
-  const handleShippingMethod = (method) => {
-    if (method === "express") {
+  const handleShippingMethod = (selectedMethod) => {
+    setMethod(selectedMethod);  // Update the shipping method state variable.
+    if (selectedMethod === "express") {
       setShippingCost(20);
     } else {
       setShippingCost(0);
     }
-  };
+};
 
-  const handleBlur = (event) => {
-    const { name, value } = event.target;
-    const validationError = validateInput(name, value, addressInputs);
 
-    setErrors((prevErrors) => {
-      const updatedErrors = { ...prevErrors, [name]: validationError };
+const handleBlur = (event) => {
+  const { name, value } = event.target;
+  const validationError = validateInput(name, value, addressInputs);
+  
+  setErrors(prevErrors => {
+    return { ...prevErrors, [name]: validationError };
+  });
 
-      // Check if all fields are filled and have no errors
-      const allFieldsFilled = Object.values(addressInputs).every(
-        (input) => input !== ""
-      );
-      const noErrors = Object.values(updatedErrors).every(
-        (error) => error === ""
-      );
+  // Check if all fields are filled and have no errors
+  const allFieldsFilled = Object.values(addressInputs).every(
+    (input) => input !== ""
+  );
+  
+  const noErrors = Object.values(errors).every(
+    (error) => error === ""
+  );
 
-      // If all fields are filled and there are no errors, the form is valid
-      setFormIsValid(allFieldsFilled && noErrors);
+  // If all fields are filled and there are no errors, the form is valid
+  if (allFieldsFilled && noErrors) {
+    setFormIsValid(true);
+  } else {
+    setFormIsValid(false);
+  }
+};
 
-      return updatedErrors;
-    });
-  };
 
   return (
     <div className="shipment-modal">
@@ -104,7 +110,11 @@ const ShippingModal = ({ setFormIsValid, ...otherProps }) => {
             </select>
           </div>
           <div className="ship-method-panel">
-            <ShipMethod handleShippingMethod={handleShippingMethod} />
+            <ShipMethod
+              handleShippingMethod={handleShippingMethod}
+              method={method}
+              setMethod={setMethod}
+            />
           </div>
         </div>
       </form>

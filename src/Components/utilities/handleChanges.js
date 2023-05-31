@@ -118,7 +118,7 @@ export const validateInput = (name, value, inputs, users) => {
   return errorMessage;
 };
 
-export const handleFormSubmit = (event) => {
+export const handleFormSubmit = (event,{ errors, inputs, setInputs, setUsers, setShowSignUpLogin, setUserLoggedIn }) => {
   event.preventDefault();
   const isValid = Object.values(errors).every((error) => error === "");
   if (isValid) {
