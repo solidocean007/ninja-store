@@ -4,7 +4,7 @@ import { handlePaymentSubmit, handleInput } from "../utilities/handleChanges";
 import { validateCardInput } from "./PaymentScript";
 import "./PaymentStyles.css";
 
-const PaymentScreen = ({ setStage }) => {
+const PaymentScreen = ({ setStage, fullTotal }) => {
   const [errors, setErrors] = useState({});
   const [paymentInputs, setPaymentInputs] = useState({
     cardHolderName: "",

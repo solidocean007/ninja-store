@@ -1,9 +1,3 @@
-label {
-  height: 70px;
-  display: block;
-  position: relative;
-}
-
 .input-root {
   border: 1px solid rgb(162,159,159);
   border-radius: 5px;

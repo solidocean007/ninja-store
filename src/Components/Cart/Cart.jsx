@@ -8,7 +8,7 @@ function Cart({ cartItems, setCartItems, onClick, onClose }) {
         <div className="cart-left">
           <div className="cart-header">
             <button className="cart-close-btn" onClick={onClose}>
-              CLOSE
+              Close Cart
             </button>
           </div>
 
@@ -25,7 +25,6 @@ function Cart({ cartItems, setCartItems, onClick, onClose }) {
             </div>
           </div>
         </div>
-        <div className="cart-right"></div>
       </div>
     </>
   );

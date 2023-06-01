@@ -13,7 +13,7 @@ export const data = [
     image: "src/assets/blue-lion.PNG",
     price: 350,
     size: {
-      width: 200,
+      width: 300,
       height: "auto",
     },
   },
@@ -22,7 +22,7 @@ export const data = [
     image: "src/assets/Black-Lion.PNG",
     price: 500,
     size: {
-      width: 400,
+      width: 300,
       height: 200,
     },
   },
@@ -32,7 +32,7 @@ export const data = [
     image: "src/assets/Green-Lion.PNG",
     price: 250,
     size: {
-      width: 400,
+      width: 300,
       height: "auto",
     },
   },
@@ -41,7 +41,7 @@ export const data = [
     image: "src/assets/Yellow-Lion.PNG",
     price: 275,
     size: {
-      width: 400,
+      width: 300,
       height: "auto",
     },
   },
@@ -49,7 +49,8 @@ export const data = [
 
 export const inputData = [
   {
-    className: "email-input",  
+    className: "email-input",
+    id: 'email',
     label: "Your email address",
     value: "email",
     name: "email",
@@ -58,6 +59,7 @@ export const inputData = [
   },
   {
     className: "password-input",  
+    id: 'password',
     label: "Create a password",
     name: "password",
     type: "password",
@@ -66,6 +68,7 @@ export const inputData = [
   },
   {
     className: "passwordConfirm-input",  
+    id: 'passwordConfirm',
     label: "Confirm your password",
     name: "passwordConfirm",
     value: "",
@@ -74,6 +77,7 @@ export const inputData = [
   },
   {
     className: "firstName-input",  
+    id: 'firstName',
     label: "First Name",
     name: "firstName",
     value: "",
@@ -82,6 +86,7 @@ export const inputData = [
   },
   {
     className: "lastName-input",  
+    id: 'lastName',
     label: "Last Name",
     name: "lastName",
     value: "",

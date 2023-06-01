@@ -4,10 +4,19 @@
 }
 
 .login-header {
+  position: fixed;
+  background-color: black;
+  top: 0;
+  left: 0;
   display: flex;
   justify-content: space-between;
   margin: auto;
-  width: 70%;
+  width: 100%;
+  z-index: 100;
+}
+
+.title-block {
+  margin-left: 3rem;
 }
 
 .user-block {
@@ -27,8 +36,34 @@
 }
 
 .featured-items {
+  margin-top: 60px;
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: center;
 }
 
+@media (max-width: 480px) {
+  button { height: 1.5rem;}
+
+  .login-header {
+    flex-direction: column;
+    padding-bottom: 10px;
+  }
+
+  .featured-items {
+    margin-top: 120px;
+  }
+  .card {
+    height: 19rem;
+    width: 10rem;
+    margin: .5 rem;
+  }
+}
+
+@media (max-width: 384px) {
+  .card {
+    height: 20rem;
+    width: 10rem;
+  }
+}

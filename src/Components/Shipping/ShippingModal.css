@@ -1,5 +1,8 @@
 .shipment-modal {
-  background-color: azure;
+  background-color: transparent;
+  color: #f2feff;
+  font-weight: 600;
+  letter-spacing: 3px;
   height: 100%;
 }
 
@@ -26,6 +29,7 @@
   justify-content: space-between;
   height: 2rem;
   width: 300px;
+  margin: 5px;
 }
 
 .region-details {
@@ -40,5 +44,5 @@
 
 .region-details select {
   height: 30px;
-  width: 80px;
+  width: 100px;
 }

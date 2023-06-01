@@ -15,7 +15,7 @@ const ShipMethod = ({ handleShippingMethod, method, setMethod, setStage, stage }
             checked={method === "standard"}
             onChange={handleChange}
           />
-          Standard Shipping
+          Standard Shipping is Free!
         </label>
       </div>
       <div>

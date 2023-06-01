@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { inputData } from "./data";
 import { validateInput, handleInput } from "./utilities/handleChanges";
-import { handleFormSubmit  } from "./SignUp_LoginScript";
+import { handleFormSubmit } from "./SignUp_LoginScript";
 import InputBase from "./InputBase";
 import "./SignUp_Login.css";
 
@@ -59,7 +59,7 @@ function SignUp_Login({
             setUsers,
             setShowSignUpLogin,
             setUserLoggedIn,
-            isSignUp
+            isSignUp,
           })
         }
       >
@@ -76,23 +76,28 @@ function SignUp_Login({
           }
 
           return (
+            <>
+              <label htmlFor={item.id}>{item.label}</label>
+            
             <InputBase
-              className={item.className}
-              key={item.name}
-              placeholder={
-                isSignUp
-                  ? item.label
-                  : item.name === "password"
-                  ? "Enter password"
-                  : item.label
-              }
-              type={item.type}
-              value={inputs[item.name]}
-              onChange={handleInput(setInputs)}
-              name={item.name}
-              onBlur={handleBlur}
-              error={errors[item.name]}
-            />
+            className={item.className}
+            key={item.name}
+            placeholder={
+              isSignUp
+                ? item.label
+                : item.name === "password"
+                ? "Enter password"
+                : item.label
+            }
+            type={item.type}
+            value={inputs[item.name]}
+            onChange={handleInput(setInputs)}
+            name={item.name}
+            onBlur={handleBlur}
+            error={errors[item.name]}
+          />
+            </>
+        
           );
         })}
 

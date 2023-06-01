@@ -4,8 +4,16 @@ import ButtonBase from "../ButtonBase/ButtonBase.jsx";
 
 import "./Summary.css";
 
-const Summary = ({ cartItems, setCartItems, stage, setStage, formIsValid, subTotalBill, shippingCost, fullTotal }) => {
-
+const Summary = ({
+  cartItems,
+  setCartItems,
+  stage,
+  setStage,
+  formIsValid,
+  subTotalBill,
+  shippingCost,
+  fullTotal,
+}) => {
   const getButtonTitle = () => {
     switch (stage) {
       case 0:
@@ -19,19 +27,33 @@ const Summary = ({ cartItems, setCartItems, stage, setStage, formIsValid, subTot
     }
   };
 
-
   return (
     <div className="cart-summary">
-      <div>
-        <div className="summary-header">Summary</div>
-        <div className="promo-box">
-          Promo: <InputBase />
-          <button>Apply</button>
-        </div>
-        <div className="Sub-total">Subtotal: ${subTotalBill}</div>
+      <div className="cart-contents">
+        {cartItems.map((item) => (
+          <div className="summary-item">
+            <div className="item-img">
+              <img src={item.image} alt="" />
+            </div>
+            <div className="item-details">
+              <h5>{item.name}</h5>
+              <h5>qty {item.quantity}</h5>
+              <h5>${item.price}</h5>
+            </div>
+            <div className="item-subTotal">${item.quantity * item.price}</div>
+          </div>
+        ))}
       </div>
-      <div>Shipping ${shippingCost}-</div>
-      <div>Total: ${fullTotal}</div>
+      
+      <div className="summary-details">
+      <div className="promo-box">
+        Promo: <InputBase />
+        <button>Apply</button>
+      </div>
+        <div className="Sub-total">Subtotal: ${subTotalBill}</div>
+        <div>{`Shipping: ${shippingCost > 0 ? `$${shippingCost}` : 'Free'}`}</div>
+        <div>Total: ${fullTotal}</div>
+      </div>
       <div className="summary-proceed-btn">
         <ButtonBase
           onClick={() => setStage((stage) => stage + 1)}

@@ -1,13 +1,37 @@
 .cart-summary {
   display: flex;
   flex-direction: column;
-  height: 90%;
   justify-content: space-between;
+  min-height: 20rem;
   font-size: large;
   border: 3px solid white;
   border-radius: 5px;
   margin: 5px;
   padding: 10px;
+}
+
+.summary-item {
+  display: flex;
+  align-items: center;
+  background-color: #cccccc;
+  border-radius: 5px;
+  font-size: medium;
+  margin: .5rem;
+}
+
+.summary-item .item-img img {
+  width: 50px;  
+  height: 50px;
+  margin: 1rem; 
+}
+
+.summary-details {
+  color: aliceblue;
+}
+
+.item-subTotal {
+  display: flex;
+  margin-left: 3rem;
 }
 
 .promo-box {

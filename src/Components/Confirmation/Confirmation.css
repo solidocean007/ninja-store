@@ -1,0 +1,14 @@
+.confirmation-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.confirm-items {
+  display: flex;
+}
+
+.confirm-image img {
+  height: 100px;
+  width: 100px;
+}

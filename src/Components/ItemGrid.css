@@ -1,14 +1,11 @@
 .card {
-  display: flex;
-  align-items: center;
-  justify-content: center;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
   cursor: pointer;
   position: relative;
   padding: 10px 10px;
   margin: 15px;
-  height: 450px;
-  width: 300px;
+  height: 28rem;
+  width: 16rem;
   overflow: hidden;
   background: linear-gradient(0deg, rgba(232, 234, 238, 1) 0%, rgba(0, 0, 0, 1) 90%);
   border: 10px solid #5a5a5a;
@@ -18,7 +15,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
   padding: 15px;
 }
 
@@ -32,26 +29,19 @@
 }
 
 .details {
+  position: absolute;
+  bottom: 10px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.lion-header {
-  /* position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, 50%);
-  text-align: center;
-  color: white;
-  font-size: 20px;
-  font-weight: bold; */
+.buy-btn-div button {
+  background-color: rgb(43, 182, 28);
 }
 
-.lion-price {
-  /* position: absolute;
-  top: 55%;
-  left: 30%; */
+.active  button {
+  background-color: red;
 }
 
 .buy-btn-div {
@@ -62,5 +52,21 @@ h2 {
   margin: 0; 
   padding: 0;
 }
+
+@media (max-width: 480px) {
+  .front img {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+@media (max-width: 384px) {
+  .card {
+    height: 20rem;
+    width: 10rem;
+  }
+}
+
+
 
 

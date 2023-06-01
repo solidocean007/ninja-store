@@ -1,15 +1,15 @@
 .cart-modal {
   display: flex;
   justify-content: space-between;
-  font-weight: bold;
   width: 100%;
   height: auto;
   border-radius: 5px;
   padding: 10px;
   background: linear-gradient(180deg, #87ceeb 0%, #b0c4de 100%);
+  font-weight: bolder;
 }
 
-.cart-left, .cart-right {
+.cart-modal .cart-left {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -30,7 +30,7 @@
   display: flex;
   color: whitesmoke;
   height: 40px;
-  width: 70px;
+  width: 8rem;
   font-size: small;
   font-weight: 800;
   align-items: center;
@@ -55,15 +55,19 @@
   flex-wrap: wrap;
   gap: 1rem;
   margin-top: 1rem;
+  background-color: #b0c4de;
+  width: 100%;
+  border-radius: 5px;
+  padding: 10px 30px;
 }
 
 .cart-item, .line-item-total {
-  color: black;
+  color: rgb(9, 9, 68);
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  border-bottom: 1px solid black;
   padding: 0.5rem 0;
+  font-size: 25px;
 }
 
 .quantity-btn {

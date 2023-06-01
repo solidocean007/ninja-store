@@ -45,7 +45,7 @@ function ItemGrid({ cartItems, setCartItems }) {
             </div>
           </div>
         </div>
-        <div className="back">
+        {/* <div className="back">
           <img
             src="/src/assets/legendary-voltron.jpg"
             alt="Back"
@@ -55,7 +55,7 @@ function ItemGrid({ cartItems, setCartItems }) {
               objectFit: "cover",
             }}
           />
-        </div>
+        </div> */}
       </div>
     );
   };

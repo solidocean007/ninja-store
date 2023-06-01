@@ -7,23 +7,22 @@ import PaymentScreen from "../Payment/PaymentScreen";
 import ConfirmationScreen from "../Confirmation/ConfirmationScreen";
 import Summary from "../Summary/Summary";
 
-const Ordering = ({ cartItems, setCartItems, onClose }) => {
+const Ordering = ({ cartItems, setCartItems, onClose, userLoggedIn }) => {
   const [stage, setStage] = useState(0);
   const [formIsValid, setFormIsValid] = useState(false);
   const [subTotalBill, setSubTotalBill] = useState(0);
   const [shippingCost, setShippingCost] = useState(0);
   const [method, setMethod] = useState("standard");
   const [fullTotal, setFullTotal] = useState(0);
+  const [showSummary, setShowSummary] = useState(true);
 
   const calculateBill = () => {
     return subTotalBill + shippingCost;
   };
-  
 
   useEffect(() => {
     setFullTotal(calculateBill());
   }, [subTotalBill, shippingCost]);
-  
 
   useEffect(() => {
     setSubTotalBill(
@@ -54,7 +53,6 @@ const Ordering = ({ cartItems, setCartItems, onClose }) => {
             method={method}
             setMethod={setMethod}
             setShippingCost={setShippingCost}
-
           />
         );
       case 2:
@@ -69,7 +67,15 @@ const Ordering = ({ cartItems, setCartItems, onClose }) => {
           />
         );
       case 3:
-        return <ConfirmationScreen onFinish={onFinish} />;
+        return (
+          <ConfirmationScreen
+            setShowSummary={setShowSummary}
+            cartItems={cartItems}
+            setCartItems={setCartItems}
+            fullTotal={fullTotal}
+            userLoggedIn={userLoggedIn}
+          />
+        );
       default:
         return null;
     }
@@ -82,16 +88,18 @@ const Ordering = ({ cartItems, setCartItems, onClose }) => {
         <div className="stage-panel">{renderStage()}</div>
       </div>
       <div className="summary-window">
-        <Summary
-          cartItems={cartItems}
-          setCartItems={setCartItems}
-          stage={stage}
-          setStage={setStage}
-          formIsValid={formIsValid}
-          subTotalBill={subTotalBill}
-          shippingCost={shippingCost}
-          fullTotal={fullTotal}
-        />
+        {showSummary && (
+          <Summary
+            cartItems={cartItems}
+            setCartItems={setCartItems}
+            stage={stage}
+            setStage={setStage}
+            formIsValid={formIsValid}
+            subTotalBill={subTotalBill}
+            shippingCost={shippingCost}
+            fullTotal={fullTotal}
+          />
+        )}
       </div>
     </div>
   );

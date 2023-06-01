@@ -17,9 +17,7 @@ function ShoppingModal() {
   return (
     <div className="store-front">
       <div className="login-header">
-        <div className="title-block">
-          <Title title="Voltron" />
-        </div>
+      <Title title="Voltron" />
         {userLoggedIn && (
           <div className="user-block">Welcome {userLoggedIn}</div>
         )}
@@ -63,6 +61,7 @@ function ShoppingModal() {
             cartItems={cartItems}
             setCartItems={setCartItems}
             onClose={() => setShowOrdering(false)}
+            userLoggedIn={userLoggedIn}
           />
         </div>
       )}

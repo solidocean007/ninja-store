@@ -4,9 +4,9 @@ const CartItem = ({ item, index, setCartItems }) => {
   const { image, name, price, quantity } = item;
 
   const decreaseQuantity = () => {
-    if (quantity > 1) {
+    if (quantity > 0) {
       handleQuantityChange(setCartItems, index, quantity - 1);
-    }
+    } 
   };
 
   const increaseQuantity = () => {
