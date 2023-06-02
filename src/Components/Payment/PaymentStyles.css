@@ -1,12 +1,13 @@
 .payment-info { 
   display: flex;
   flex-direction: column;
+  color: rgb(229, 229, 241);
+
 }
 
 .form-group label {
   height: 30px;
   margin-top: 10px;
-  color: blue;
   
 }
 

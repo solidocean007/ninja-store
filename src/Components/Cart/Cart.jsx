@@ -5,8 +5,7 @@ function Cart({ cartItems, setCartItems, onClick, onClose }) {
   return (
     <>
       <div className="cart-modal" id="cart-container-modal">
-        <div className="cart-left">
-          <div className="cart-header">
+      <div className="cart-header">
             <button className="cart-close-btn" onClick={onClose}>
               Close Cart
             </button>
@@ -24,7 +23,6 @@ function Cart({ cartItems, setCartItems, onClick, onClose }) {
               ))}
             </div>
           </div>
-        </div>
       </div>
     </>
   );

@@ -21,17 +21,14 @@ const Ordering = ({ cartItems, setCartItems, onClose, userLoggedIn }) => {
   };
 
   useEffect(() => {
-    setFullTotal(calculateBill());
-  }, [subTotalBill, shippingCost]);
-
-  useEffect(() => {
-    setSubTotalBill(
-      cartItems.reduce(
-        (accumulator, { price, quantity }) => accumulator + price * quantity,
-        0
-      )
+    const subTotal = cartItems.reduce(
+      (accumulator, { price, quantity }) => accumulator + price * quantity,
+      0
     );
-  }, [cartItems, setSubTotalBill]);
+
+    setSubTotalBill(subTotal);
+    setFullTotal(subTotal + shippingCost);
+  }, [cartItems, shippingCost]);
 
   function renderStage() {
     switch (stage) {
@@ -82,24 +79,28 @@ const Ordering = ({ cartItems, setCartItems, onClose, userLoggedIn }) => {
   }
 
   return (
-    <div className="order-window">
+    <>
+      <div className="order-window">
         <ProgressBar stage={stage} />
 
+        <div className="order-summary">
         {renderStage()}
 
-      {showSummary && (
-          <Summary
-            cartItems={cartItems}
-            setCartItems={setCartItems}
-            stage={stage}
-            setStage={setStage}
-            formIsValid={formIsValid}
-            subTotalBill={subTotalBill}
-            shippingCost={shippingCost}
-            fullTotal={fullTotal}
-          />
-        )}
-    </div>
+          {showSummary && (
+            <Summary
+              cartItems={cartItems}
+              setCartItems={setCartItems}
+              stage={stage}
+              setStage={setStage}
+              formIsValid={formIsValid}
+              subTotalBill={subTotalBill}
+              shippingCost={shippingCost}
+              fullTotal={fullTotal}
+            />
+          )}
+        </div>
+      </div>
+    </>
   );
 };
 

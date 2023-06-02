@@ -1,3 +1,5 @@
+import './ShipMethod.css'
+
 const ShipMethod = ({ handleShippingMethod, method, setMethod, setStage, stage }) => {
 
   const handleChange = (e) => {
@@ -6,8 +8,8 @@ const ShipMethod = ({ handleShippingMethod, method, setMethod, setStage, stage }
   };
 
   return (
-    <div>
-      <div>
+    <div className='ship-method'>
+      <div className="ship-option">
         <label>
           <input
             type="radio"
@@ -18,7 +20,7 @@ const ShipMethod = ({ handleShippingMethod, method, setMethod, setStage, stage }
           Standard Shipping is Free!
         </label>
       </div>
-      <div>
+      <div className="ship-option">
         <label>
           <input
             type="radio"

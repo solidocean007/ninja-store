@@ -14,15 +14,14 @@ const CartItem = ({ item, index, setCartItems }) => {
   };
 
   return (
-    <div>
-      <div className="cart-items" key={name}>
+    <div className="cart-items" key={name}>
         <div className="cart-item-image">
           <img
             src={image}
             alt={name}
             style={{
-              width: "15vw",
-              height: "20vh",
+              width: "8vw",
+              height: "12vh",
             }}
           />
         </div>
@@ -41,7 +40,6 @@ const CartItem = ({ item, index, setCartItems }) => {
 
         <div className="line-item-total">${price * quantity}</div>
       </div>
-    </div>
   );
 };
 

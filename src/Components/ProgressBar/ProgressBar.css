@@ -8,6 +8,7 @@
   color: rgb(29, 8, 8);
   padding: 15px;
   margin-bottom: 5px;
+  background-color: rgb(31, 28, 28);
 }
 
 .stage-box {
@@ -44,6 +45,24 @@
 
 }
 
+@media (max-width: 850px) {
+  .p-Box {
+    width: auto;
+    padding: .5em;
+  } 
+}
+
 .active-segment {
   background-color: chartreuse;
+}
+
+@media (max-width: 470px) {
+  .stage-box, .p-Box.active {
+    font-size: xx-small;
+  }
+
+  .p-Box {
+    width: auto;
+    padding: 0.2em;
+  }
 }

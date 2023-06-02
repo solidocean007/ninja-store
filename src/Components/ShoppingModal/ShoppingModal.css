@@ -6,7 +6,7 @@
 
 .login-header {
   position: fixed;
-  background-color: black;
+  background-color: rgb(34, 33, 33);
   top: 0;
   left: 0;
   display: flex;
@@ -84,10 +84,8 @@
 @media (max-width: 1200px) { .login-header { padding: 0 10%; }}
 
 @media (max-width: 825px) {
-  .login-header {
-    padding-bottom: 10px;
-    /* font-size: xx-small; */
-    padding: auto;
+  .shipping-modal {
+    height: 50%;
   }
 
 }

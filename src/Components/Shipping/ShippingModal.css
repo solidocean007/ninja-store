@@ -10,7 +10,6 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: 50%;
 }
 
 .error-div {
@@ -45,4 +44,26 @@
 .region-details select {
   height: 30px;
   width: 100px;
+}
+
+.ship-method-panel {
+  padding: .5em;
+  width: 100%;
+}
+
+
+@media (max-width: 850px) {
+  .shipment-modal {
+    height: auto;
+    overflow-y: scroll;
+  }
+
+}
+
+@media (max-width: 767px) {
+  
+}
+
+@media (max-width: 540px) {
+  
 }

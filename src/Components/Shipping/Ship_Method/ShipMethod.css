@@ -1,0 +1,11 @@
+/* .ship-option label {
+  display: flex;
+} */
+
+@media (max-width: 500px) {
+  .ship-method {
+    display: flex;
+    justify-content: space-around;
+  }
+
+}
