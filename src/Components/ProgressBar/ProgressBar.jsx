@@ -6,19 +6,22 @@ const ProgressBar = ({ stage }) => {
   return (
     <div className="progress-box">
       {barParts.map((barPart, index) => (
-        <div key={barPart} className="stage-box">
-          <div className={`p-Box ${stage >= index ? "active" : ""}`}>
-            {barPart}
+        <>
+          <div key={barPart} className="stage-box">
+            <div className={`p-Box ${stage >= index ? "active" : ""}`}>
+              {barPart}
+            </div>
           </div>
-          {stage !== barParts[barParts.length - 1] && (
+          {index !== barParts.length - 1 && (
             <div
-              className={`p-Bar ${stage >= index + 1 ? "active" : ""}`}
+              className={`p-Bar ${stage > index ? "active" : ""}`}
             ></div>
           )}
-        </div>
+        </>
       ))}
     </div>
   );
 };
+
 
 export default ProgressBar;

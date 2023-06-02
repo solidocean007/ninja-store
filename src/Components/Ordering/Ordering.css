@@ -30,7 +30,7 @@
 @media (max-width: 850px) {
   .order-summary {
     flex-direction: column;
-    width: 95%;
+    width: 100%;
   }
 
   .order-window {
