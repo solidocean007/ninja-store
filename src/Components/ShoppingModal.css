@@ -49,6 +49,10 @@
   margin: 0 20px;
 }
 
+.login-block button {
+  font-size: smaller;
+}
+
 .featured-items {
   margin-top: 60px;
   display: flex;

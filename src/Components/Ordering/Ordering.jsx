@@ -83,12 +83,11 @@ const Ordering = ({ cartItems, setCartItems, onClose, userLoggedIn }) => {
 
   return (
     <div className="order-window">
-      <div className="stage-window">
         <ProgressBar stage={stage} />
-        <div className="stage-panel">{renderStage()}</div>
-      </div>
-      <div className="summary-window">
-        {showSummary && (
+
+        {renderStage()}
+
+      {showSummary && (
           <Summary
             cartItems={cartItems}
             setCartItems={setCartItems}
@@ -100,7 +99,6 @@ const Ordering = ({ cartItems, setCartItems, onClose, userLoggedIn }) => {
             fullTotal={fullTotal}
           />
         )}
-      </div>
     </div>
   );
 };

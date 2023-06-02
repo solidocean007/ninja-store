@@ -5,9 +5,10 @@
   min-height: 20rem;
   font-size: large;
   border: 3px solid white;
-  border-radius: 5px;
   margin: 5px;
   padding: 10px;
+  border-radius: 5px;
+  background-color:darkslategrey;
 }
 
 .summary-item {
