@@ -21,8 +21,8 @@ const CartItem = ({ item, index, setCartItems }) => {
             src={image}
             alt={name}
             style={{
-              width: "10vw",
-              height: "10vh",
+              width: "15vw",
+              height: "20vh",
             }}
           />
         </div>

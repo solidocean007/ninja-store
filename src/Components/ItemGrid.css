@@ -9,7 +9,28 @@
   overflow: hidden;
   background: linear-gradient(0deg, rgba(232, 234, 238, 1) 0%, rgba(0, 0, 0, 1) 90%);
   border: 10px solid #5a5a5a;
+  border-radius: 3px;
 }
+
+.card img {
+  position: relative; /* Add this line */
+  transition: transform 0.5s ease-in-out;
+}
+
+.card.active {
+  overflow: visible;
+}
+
+.card.active img {
+  transform: scale(1.1);
+  z-index: 5; /* This will now work because the image has a position value other than 'static' */
+}
+
+button {
+  position: relative; /* Add this line */
+  z-index: 6; /* Add this line, and make sure it's higher than the z-index of the image */
+}
+
 
 .front {
   display: flex;
@@ -17,6 +38,12 @@
   align-items: center;
   justify-content: space-between;
   padding: 15px;
+}
+
+.front .details {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
+  margin-bottom: .5rem;
 }
 
 .image-box {
@@ -30,6 +57,7 @@
 
 .details {
   position: absolute;
+  color:rgba(232, 234, 238, 1);
   bottom: 10px;
   display: flex;
   flex-direction: column;
@@ -55,9 +83,14 @@ h2 {
 
 @media (max-width: 480px) {
   .front img {
-    width: 60px;
-    height: 60px;
+    width: 300%;
+    height: 300%;
   }
+
+  .details {
+    font-size: small;
+  }
+
 }
 
 @media (max-width: 384px) {

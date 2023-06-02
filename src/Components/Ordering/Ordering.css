@@ -1,15 +1,13 @@
-.stage-panel {
-  width: 100%;
-  height: 100%;
-}
-
 .order-window {
   display: flex;
+  justify-content: center;
+  align-items: center;
   min-height: 50%;
-  background-color: white;
   border-radius: 5px;
   padding: 5px;
   background-color: #13294a;
+  overflow-y: auto;
+  height: 80vh;
 }
 
 .stage-window {
@@ -23,3 +21,12 @@
   background-color:darkslategrey;
 }
 
+@media (max-width: 1000px) {
+  .order-window {
+    flex-direction: column;
+    width: 95%;
+  }
+}
+
+@media (max-width: 384px) {
+}

@@ -27,10 +27,6 @@ function ItemGrid({ cartItems, setCartItems }) {
             <img
               src={image}
               alt={name}
-              style={{
-                width: size?.width,
-                height: size?.height,
-              }}
             />
           </div>
           <div className="details">
@@ -45,17 +41,6 @@ function ItemGrid({ cartItems, setCartItems }) {
             </div>
           </div>
         </div>
-        {/* <div className="back">
-          <img
-            src="/src/assets/legendary-voltron.jpg"
-            alt="Back"
-            style={{
-              width: "100%",
-              height: "100%",
-              objectFit: "cover",
-            }}
-          />
-        </div> */}
       </div>
     );
   };

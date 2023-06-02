@@ -18,6 +18,8 @@ function ShoppingModal() {
     <div className="store-front">
       <div className="login-header">
       <Title title="Voltron" />
+       
+        <div className="header-details">
         {userLoggedIn && (
           <div className="user-block">Welcome {userLoggedIn}</div>
         )}
@@ -39,6 +41,8 @@ function ShoppingModal() {
             ) : null}
           </div>
         </div>
+        </div>
+        
       </div>
 
       <ItemGrid cartItems={cartItems} setCartItems={setCartItems} />

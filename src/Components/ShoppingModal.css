@@ -1,6 +1,7 @@
 .store-front {
   display: flex;
   flex-direction: column;
+  overflow: hidden;
 }
 
 .login-header {
@@ -9,20 +10,33 @@
   top: 0;
   left: 0;
   display: flex;
+  /* flex-wrap: wrap; */
   justify-content: space-between;
+  align-items: center;
   margin: auto;
+  padding: 0 15%;
+  height: 100px;
   width: 100%;
   z-index: 100;
 }
 
 .title-block {
-  margin-left: 3rem;
+  margin: 2rem 1rem 1rem;
 }
 
+.header-details {
+  display: flex;
+  align-items: center;
+}
+
+.sign-up button {
+  width: 10rem;
+}
 .user-block {
   display: flex;
   align-items: center;
   color: white;
+  margin-bottom: .5rem;
 }
 
 .login-block {
@@ -43,27 +57,49 @@
   justify-content: center;
 }
 
-@media (max-width: 480px) {
-  button { height: 1.5rem;}
-
-  .login-header {
-    flex-direction: column;
-    padding-bottom: 10px;
-  }
-
+@media (max-width: 1450px) {
   .featured-items {
     margin-top: 120px;
   }
-  .card {
-    height: 19rem;
-    width: 10rem;
-    margin: .5 rem;
+  /* .card {
+    height: 12rem;
+    width: 50%;
+  }
+  .front {
+    flex-direction: row;
+  }
+  .details { position: static; padding: 1rem;} */
+}
+
+@media (max-width: 1000px) {
+  .header-details {
+    flex-direction: column;
   }
 }
 
-@media (max-width: 384px) {
-  .card {
-    height: 20rem;
-    width: 10rem;
+@media (max-width: 1200px) { .login-header { padding: 0 10%; }}
+
+@media (max-width: 825px) {
+  .login-header {
+    padding-bottom: 10px;
+    /* font-size: xx-small; */
+    padding: auto;
   }
+
+}
+
+@media (max-width: 767px) {
+  .title-block { margin: auto;}
+
+  /* .login-header { flex-direction: column;} */
+}
+
+@media (max-width: 540px) {
+  h1 { font-size: x-large;}
+  .user-block { font-size: xx-small;}
+  .login-header {
+    flex-direction: column;
+    padding: auto;
+  }
+  .header-details { flex-direction: row;}
 }
