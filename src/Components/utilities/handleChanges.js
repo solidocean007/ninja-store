@@ -22,13 +22,14 @@ export const validateInput = (name, value, inputs, users, isSignUp) => {
         }
       }
       break;
-      case "password":
-        const passwordRegex = /^.{8,}$/;
-        if (!value.match(passwordRegex)) {
-          errorMessage = "Password must contain at least 8 characters, including at least one letter and one number";
-        }
-        break;
-      
+    case "password":
+      const passwordRegex = /^.{8,}$/;
+      if (!value.match(passwordRegex)) {
+        errorMessage =
+          "Password must contain at least 8 characters, including at least one letter and one number";
+      }
+      break;
+
     case "passwordConfirm":
       if (isSignUp) {
         const password = inputs.password;
@@ -45,13 +46,12 @@ export const validateInput = (name, value, inputs, users, isSignUp) => {
 
 export const handleInput = (setInputs) => (event) => {
   const { name, value } = event.target;
-  if (name === 'cardCVV' && value.length > 4) {
+  if (name === "cardCVV" && value.length > 4) {
     return;
   }
-  
+
   setInputs((oldValues) => ({ ...oldValues, [name]: value }));
 };
-
 
 export function handleQuantityChange(setCart, index, newQuantity) {
   setCart((prevCart) => {
@@ -63,12 +63,15 @@ export function handleQuantityChange(setCart, index, newQuantity) {
   });
 }
 
-
-
-export const handlePaymentSubmit = (event, { errors, setPaymentInputs, setErrors, setStage }) => {
+export const handlePaymentSubmit = (
+  event,
+  { errors, paymentInputs, setPaymentInputs, setErrors, setStage, setLastFourCardNumbers }
+) => {
   event.preventDefault();
   const isValid = Object.values(errors).every((error) => error === "");
-  if(isValid) {
+  if (isValid) {
+    const lastFour = paymentInputs.cardNumber.slice(-4);
+    setLastFourCardNumbers(lastFour); // assuming setLastFourDigits is passed as a prop
     // process payment logic would go here.
 
     // clear payment input states
@@ -82,7 +85,6 @@ export const handlePaymentSubmit = (event, { errors, setPaymentInputs, setErrors
 
     // clear errors
     setErrors({});
-    setStage((stage) => stage + 1)
+    setStage((stage) => stage + 1);
   }
-
-}
+};

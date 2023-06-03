@@ -22,6 +22,7 @@ const Ordering = ({
   const [method, setMethod] = useState("standard");
   const [fullTotal, setFullTotal] = useState(0);
   const [showSummary, setShowSummary] = useState(true);
+  const [lastFourCardNumbers, setLastFourCardNumbers] = useState('');
 
   useEffect(() => {
     const subTotal = cartItems.reduce(
@@ -60,11 +61,8 @@ const Ordering = ({
         return (
           <PaymentScreen
             setStage={setStage}
-            cartItems={cartItems}
-            setCartItems={setCartItems}
-            onClose={onClose}
-            setFormIsValid={setFormIsValid}
             fullTotal={fullTotal}
+            setLastFourCardNumbers={setLastFourCardNumbers}
           />
         );
       case 3:
@@ -78,6 +76,7 @@ const Ordering = ({
             setStage={setStage}
             onClose={onClose}
             setActiveCards={setActiveCards}
+            lastFourCardNumbers={lastFourCardNumbers}
           />
         );
       default:

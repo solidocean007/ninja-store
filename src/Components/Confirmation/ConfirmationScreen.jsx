@@ -11,6 +11,7 @@ const ConfirmationScreen = ({
   setStage,
   onClose,
   setActiveCards,
+  lastFourCardNumbers,
 }) => {
   const [formVoltron, setFormVoltron] = useState(false);
 
@@ -48,7 +49,7 @@ const ConfirmationScreen = ({
       )}
 
       <h2>{message}</h2>
-      <div>Your payment for ${fullTotal} has been processed.</div>
+      <div>Your payment for ${fullTotal} has been processed using card ending with {lastFourCardNumbers}.</div>
       <div>You ordered:</div>
       <div className="confirm-end">
         {cartItems.map((item) => (
