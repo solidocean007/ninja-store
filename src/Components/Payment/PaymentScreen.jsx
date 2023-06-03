@@ -14,6 +14,24 @@ const PaymentScreen = ({ setStage, fullTotal }) => {
     cardCVV: "",
   });
 
+  const formatCardNumber = (cardNumber) => {
+    let formattedNumber = cardNumber
+      .replace(/\W/gi, "")
+      .replace(/(.{4})/g, "$1 ");
+
+    if (formattedNumber.trim().length > 19) {
+      formattedNumber = formattedNumber.trim().substr(0, 19);
+    }
+
+    return formattedNumber;
+  };
+
+  const handleCardNumberChange = (e) => {
+    handleInput(setPaymentInputs)({
+      target: { name: e.target.name, value: e.target.value.replace(/\s/g, '') },
+    });
+  };
+
   const handleBlur = (event) => {
     const { name, value } = event.target;
     const validationError = validateCardInput(name, value, paymentInputs);
@@ -29,11 +47,20 @@ const PaymentScreen = ({ setStage, fullTotal }) => {
     <div className="payment-info">
       <h2>Payment Information</h2>
 
-      <form onSubmit={(event) => handlePaymentSubmit(event, { errors, setPaymentInputs, setErrors, setStage, fullTotal })}>
-
+      <form
+        onSubmit={(event) =>
+          handlePaymentSubmit(event, {
+            errors,
+            setPaymentInputs,
+            setErrors,
+            setStage,
+            fullTotal,
+          })
+        }
+      >
         <div className="form-group">
           <div className="cardForm-field">
-            <label html='cardHolderName'>Card Holder Name</label>
+            <label html="cardHolderName">Card Holder Name</label>
             <InputBase
               value={paymentInputs.cardHolderName}
               onChange={handleInput(setPaymentInputs)}
@@ -46,10 +73,10 @@ const PaymentScreen = ({ setStage, fullTotal }) => {
             )}
           </div>
           <div className="cardForm-field">
-            <label html='cardNumber'>Card number</label>
+            <label html="cardNumber">Card number</label>
             <InputBase
-              value={paymentInputs.cardNumber}
-              onChange={handleInput(setPaymentInputs)}
+              value={formatCardNumber(paymentInputs.cardNumber)}
+              onChange={handleCardNumberChange}
               name="cardNumber"
               id="cardNumber"
               onBlur={handleBlur}
