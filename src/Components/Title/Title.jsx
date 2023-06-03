@@ -13,7 +13,7 @@ const Title = ({
     <div className="title-block">
       <div className="header-trim"></div>
       <div className="logo-block">
-        <img src="src/assets/voltron-logo.png" alt="Voltron" />
+        <img src="src/assets/voltron-logo.png" alt="Voltron-image" />
       </div>
       <div className="login-header">
         <div className="header-details">
