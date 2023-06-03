@@ -4,11 +4,6 @@
   overflow: hidden;
 }
 
-.test-image img {
-  width: 100px;
-  height: 100px;
-}
-
 .featured-items {
   margin-top: 60px;
   display: flex;
