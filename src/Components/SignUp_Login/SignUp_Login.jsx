@@ -112,7 +112,7 @@ function SignUp_Login({
                 name={item.name}
                 onBlur={handleBlur}
               />
-              {errors(item.name) && (
+              {errors[item.name] && (
                 <div className="sign-up-error">{errors[item.name]}</div>
               )}
               {(item.name === "password" ||

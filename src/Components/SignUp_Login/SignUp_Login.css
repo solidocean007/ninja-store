@@ -23,6 +23,11 @@
   color: var(--color-light);
 }
 
+.sign-up-error {
+  color: red;
+  font-weight: 900;
+}
+
 .logInOptions {
   display: flex;
   justify-content: space-between;
