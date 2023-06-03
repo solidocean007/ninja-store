@@ -1,38 +1,38 @@
-import redLion from '../../assets/Red-Lion.png';
-import blueLion from '../../assets/Blue-Lion.png';
-import blackLion from '../../assets/Black-Lion.PNG'; 
-import greenLion from '../../assets/Green-Lion.PNG'; 
-import yellowLion from '../../assets/Yellow-Lion.PNG'; 
+// import redLion from '../../assets/Red-Lion.png';
+// import blueLion from '../../assets/Blue-Lion.png';
+// import blackLion from '../../assets/Black-Lion.PNG'; 
+// import greenLion from '../../assets/Green-Lion.PNG'; 
+// import yellowLion from '../../assets/Yellow-Lion.PNG'; 
 
 
 export const data = [
   {
     name: "Red Lion",
-    image: redLion,
+    image: new URL('../../assets/Red-Lion.png', import.meta.url),
     price: 300,
   },
   {
     name: "Blue Lion",
-    image: blueLion,
+    image: new URL('../../assets/Blue-Lion.png', import.meta.url),
     price: 350,
   },
   {
     name: "Black Lion",
-    image: blackLion,
+    image: new URL('../../assets/Black-Lion.PNG', import.meta.url),
     price: 500,
   },
-  ,
   {
     name: "Green Lion",
-    image: greenLion,
+    image: new URL('../../assets/Green-Lion.PNG', import.meta.url),
     price: 250,
   },
   {
     name: "Yellow Lion",
-    image: yellowLion,
+    image: new URL('../../assets/Yellow-Lion.PNG', import.meta.url),
     price: 275,
   },
 ];
+
 
 export const inputData = [
   {
