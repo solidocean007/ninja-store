@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import "./ShippingModal.css";
-import InputBase from "../InputBase";
+import InputBase from "../Input/InputBase";
 import { handleInput, validateInput } from "../utilities/handleChanges";
 import { countries } from "./shipping_data";
 import { states } from "./state_data";
 import { address_data } from "./address_data";
 import ShipMethod from "./Ship_Method/ShipMethod";
 
-const ShippingModal = ({ setFormIsValid, method, setMethod, setShippingCost, ...otherProps }) => {
+const ShippingModal = ({ setFormIsValid, method, setMethod, setShippingCost, setStage, stage, ...otherProps }) => {
   const [errors, setErrors] = useState({});
   const [addressInputs, setAddressInputs] = useState({
     WholeName: "",
@@ -114,6 +114,8 @@ const handleBlur = (event) => {
               handleShippingMethod={handleShippingMethod}
               method={method}
               setMethod={setMethod}
+              setStage={setStage}
+              stage={stage}
             />
           </div>
         </div>

@@ -31,7 +31,7 @@ const ShipMethod = ({ handleShippingMethod, method, setMethod, setStage, stage }
           Express Shipping (+$20)
         </label>
       </div>
-      <button onClick={() => setStage(stage - 1)}>Back to Cart</button>
+      <button onClick={() => setStage(0)}>Back to Cart</button>
     </div>
   );
 };

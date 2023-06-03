@@ -1,51 +1,40 @@
 import { useState } from "react";
-import SignUpLogInButton from "../SignUpLogInButton";
+import SignUpLogInButton from "../SignUp_Login_Button/SignUpLogInButton";
 import CartButton from "../Cart/CartButton";
-import SignUp_Login from "../SignUp_Login";
-import Title from "../Title";
-import ItemGrid from "../ItemGrid";
+import SignUp_Login from "../SignUp_Login/SignUp_Login";
+import Title from "../Title/Title";
+import ItemGrid from "./ItemGrid/ItemGrid";
 import Ordering from "../Ordering/Ordering";
 import "./ShoppingModal.css";
 
-function ShoppingModal() {
-  const [users, setUsers] = useState([]); // For holding names of users
-  const [cartItems, setCartItems] = useState([]);
-  const [userLoggedIn, setUserLoggedIn] = useState(""); // The name of the current user logged in.
-  const [showSignUpLogin, setShowSignUpLogin] = useState(false);
-  const [showOrdering, setShowOrdering] = useState(false);
+function ShoppingModal({
+  showOrdering,
+  setShowOrdering,
+  showSignUpLogin,
+  setShowSignUpLogin,
+  userLoggedIn,
+  setUserLoggedIn,
+  users,
+  setUsers,
+  cartItems,
+  setCartItems,
+  stage,
+  setStage,
+}) {
+  const [activeCards, setActiveCards] = useState({});
 
   return (
     <div className="store-front">
-      <div className="login-header">
-      <Title title="Voltron" />
-       
-        <div className="header-details">
-        {userLoggedIn && (
-          <div className="user-block">Welcome {userLoggedIn}</div>
-        )}
-        <div className="login-block">
-          <div className="sign-up">
-            <SignUpLogInButton
-              userLoggedIn={userLoggedIn}
-              setShowSignUpLogin={setShowSignUpLogin}
-              setUserLoggedIn={setUserLoggedIn}
-            />
-          </div>
-          <div className="cart-box">
-            {cartItems.length > 0 ? (
-              <CartButton
-                userLoggedIn={userLoggedIn}
-                setShowOrdering={setShowOrdering}
-                setShowSignUpLogin={setShowSignUpLogin}
-              />
-            ) : null}
-          </div>
-        </div>
-        </div>
-        
-      </div>
+      <Title
+        userLoggedIn={userLoggedIn}
+        setShowSignUpLogin={setShowSignUpLogin}
+        setUserLoggedIn={setUserLoggedIn}
+        setShowOrdering={setShowOrdering}
+        stage={stage}
+        cartItems={cartItems}
+      />
 
-      <ItemGrid cartItems={cartItems} setCartItems={setCartItems} />
+      <ItemGrid cartItems={cartItems} setCartItems={setCartItems} activeCards={activeCards} setActiveCards={setActiveCards}/>
 
       {showSignUpLogin && !userLoggedIn && (
         <div className="login-signUp-modal">
@@ -66,6 +55,9 @@ function ShoppingModal() {
             setCartItems={setCartItems}
             onClose={() => setShowOrdering(false)}
             userLoggedIn={userLoggedIn}
+            stage={stage}
+            setStage={setStage}
+            setActiveCards={setActiveCards}
           />
         </div>
       )}

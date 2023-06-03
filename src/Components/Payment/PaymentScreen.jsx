@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import InputBase from "../InputBase";
+import InputBase from "../Input/InputBase";
 import { handlePaymentSubmit, handleInput } from "../utilities/handleChanges";
 import { validateCardInput } from "./PaymentScript";
 import "./PaymentStyles.css";

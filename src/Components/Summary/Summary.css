@@ -28,6 +28,7 @@
 
 .summary-details {
   color: aliceblue;
+  width: 50%;
 }
 
 .item-subTotal {
@@ -37,19 +38,23 @@
 
 .promo-box {
   display: flex;
+  width: 80%;
   align-items: center;
-  max-width: 400px;
   justify-content: space-between;
+}
+
+.promo-box input {
+  width: 70%;
 }
 
 .promo-box button {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: greenyellow;
+  background-color: rgb(54, 136, 212);
   border-color: rgb(151, 150, 206);
-  color: rgb(151, 150, 206);
-  padding: 3px;
+  color: rgb(224, 224, 233);
+  padding: 10px;
   width: 50px;
   height: 30px;
   margin: 10px;
@@ -66,5 +71,6 @@ button:disabled {
 
 .summary-proceed-btn {
   font-size: small;
+  margin-top: 15px;
 }
 

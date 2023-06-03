@@ -1,8 +1,8 @@
 import React, { useState } from "react";
-import { inputData } from "./data";
-import { validateInput, handleInput } from "./utilities/handleChanges";
+import { inputData } from "../../assets/data";
+import { validateInput, handleInput } from "../utilities/handleChanges";
 import { handleFormSubmit } from "./SignUp_LoginScript";
-import InputBase from "./InputBase";
+import InputBase from "../Input/InputBase";
 import "./SignUp_Login.css";
 
 function SignUp_Login({

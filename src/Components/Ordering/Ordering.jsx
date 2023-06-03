@@ -7,18 +7,21 @@ import PaymentScreen from "../Payment/PaymentScreen";
 import ConfirmationScreen from "../Confirmation/ConfirmationScreen";
 import Summary from "../Summary/Summary";
 
-const Ordering = ({ cartItems, setCartItems, onClose, userLoggedIn }) => {
-  const [stage, setStage] = useState(0);
+const Ordering = ({
+  cartItems,
+  setCartItems,
+  onClose,
+  userLoggedIn,
+  stage,
+  setStage,
+  setActiveCards,
+}) => {
   const [formIsValid, setFormIsValid] = useState(false);
   const [subTotalBill, setSubTotalBill] = useState(0);
   const [shippingCost, setShippingCost] = useState(0);
   const [method, setMethod] = useState("standard");
   const [fullTotal, setFullTotal] = useState(0);
   const [showSummary, setShowSummary] = useState(true);
-
-  const calculateBill = () => {
-    return subTotalBill + shippingCost;
-  };
 
   useEffect(() => {
     const subTotal = cartItems.reduce(
@@ -50,6 +53,7 @@ const Ordering = ({ cartItems, setCartItems, onClose, userLoggedIn }) => {
             method={method}
             setMethod={setMethod}
             setShippingCost={setShippingCost}
+            setStage={setStage}
           />
         );
       case 2:
@@ -71,6 +75,9 @@ const Ordering = ({ cartItems, setCartItems, onClose, userLoggedIn }) => {
             setCartItems={setCartItems}
             fullTotal={fullTotal}
             userLoggedIn={userLoggedIn}
+            setStage={setStage}
+            onClose={onClose}
+            setActiveCards={setActiveCards}
           />
         );
       default:
@@ -84,12 +91,11 @@ const Ordering = ({ cartItems, setCartItems, onClose, userLoggedIn }) => {
         <ProgressBar stage={stage} />
 
         <div className="order-summary">
-        {renderStage()}
+          {renderStage()}
 
           {showSummary && (
             <Summary
               cartItems={cartItems}
-              setCartItems={setCartItems}
               stage={stage}
               setStage={setStage}
               formIsValid={formIsValid}

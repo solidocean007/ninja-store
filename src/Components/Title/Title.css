@@ -1,0 +1,115 @@
+.title-block {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  background-color: rgb(34, 33, 33);
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 15%;
+  height: 100px;
+  width: 100%;
+  z-index: 100;
+}
+
+.header-trim {
+  position: absolute;
+  top: 80%;
+  left: 0;
+  right: 0;
+  height: 3px;
+  z-index: 30;
+  background: linear-gradient(
+    to right,
+    rgba(0, 255, 255, 1),
+    rgba(0, 128, 128, 1)
+  ); /* gradient effect */
+  box-shadow: 0 0 10px aqua, 0 0 20px aqua; /* glowing effect */
+}
+
+.logo-block {
+  padding-top: 45px;
+  z-index: 51;
+}
+
+.header-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 55;
+}
+
+.sign-up button {
+  width: 10rem;
+  z-index: 55;
+}
+
+.user-block {
+  display: flex;
+  align-items: center;
+  color: white;
+  margin-bottom: 0.5rem;
+  z-index: 55;
+}
+
+.login-block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 55;
+}
+
+.login-block div {
+  margin: 0 20px;
+}
+
+.login-block button {
+  font-size: smaller;
+}
+
+@media (max-width: 780px) {
+  .title-block {
+    padding: 0 10%;
+  }
+  .login-block button {
+    font-size: x-small;
+  }
+  .user-block {
+    font-size: small;
+  }
+  .login-header {
+    /* flex-direction: column; */
+    padding: auto;
+  }
+}
+
+@media (max-width: 700px) {
+  .logo-block {
+    padding: 0;
+  }
+  .logo-block img {
+    height: 80px;
+  }
+  .sign-up button {
+    width: 5rem;
+    z-index: 55;
+  }
+}
+
+@media (max-width: 500px) {
+  .title-block {
+    padding: 0 5%;
+  }
+  .login-header {
+    padding: 0;
+  }
+
+  .login-block div {
+    margin: 0 10px;
+  }
+}
+
+@media (max-width: 400px) {
+  .logo-block img { height: 50px;}
+  .login-block button { width: 50px; font-size: xx-small;}
+}

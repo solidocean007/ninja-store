@@ -4,55 +4,7 @@
   overflow: hidden;
 }
 
-.login-header {
-  position: fixed;
-  background-color: rgb(34, 33, 33);
-  top: 0;
-  left: 0;
-  display: flex;
-  /* flex-wrap: wrap; */
-  justify-content: space-between;
-  align-items: center;
-  margin: auto;
-  padding: 0 15%;
-  height: 100px;
-  width: 100%;
-  z-index: 100;
-}
 
-.title-block {
-  margin: 2rem 1rem 1rem;
-}
-
-.header-details {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.sign-up button {
-  width: 10rem;
-}
-.user-block {
-  display: flex;
-  align-items: center;
-  color: white;
-  margin-bottom: 0.5rem;
-}
-
-.login-block {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.login-block div {
-  margin: 0 20px;
-}
-
-.login-block button {
-  font-size: smaller;
-}
 
 .featured-items {
   margin-top: 60px;
@@ -68,11 +20,6 @@
   }
 }
 
-@media (max-width: 1000px) {
-  /* .header-details {
-    flex-direction: column;
-  } */
-}
 
 @media (max-width: 1200px) {
   .login-header {
@@ -86,35 +33,11 @@
   }
 }
 
-@media (max-width: 767px) {
-  .title-block {
-    margin: auto;
-  }
-
-  /* .login-header { flex-direction: column;} */
-}
-
 @media (max-width: 540px) {
   h1 {
     font-size: 40px;
   }
-  .login-block button {
-    font-size: xx-small;
-    width: 15em;
-  }
-  .user-block {
-    font-size: xx-small;
-  }
-  .login-header {
-    /* flex-direction: column; */
-    padding: auto;
-  }
-  .header-details {
-    flex-direction: row;
-  }
-  .cart-box button {
-    width: 10em;
-  }
+  
 }
 
 @media (max-width: 480px) {

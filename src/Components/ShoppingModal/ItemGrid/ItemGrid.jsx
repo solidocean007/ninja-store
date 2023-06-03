@@ -1,10 +1,9 @@
 import { React, useState } from "react";
-import { data } from "./data";
-import { handleCartUpdate } from "./utilities/cart";
+import { data } from "../../../assets/data";
+import { handleCartUpdate } from "../../utilities/cart";
 import "./ItemGrid.css";
 
-function ItemGrid({ cartItems, setCartItems }) {
-  const [activeCards, setActiveCards] = useState({});
+function ItemGrid({ cartItems, setCartItems, activeCards, setActiveCards }) {
 
   const generateItemBlock = ({ name, image, price, size }, index) => {
     const inCart = cartItems.find((obj) => obj.name === name);
