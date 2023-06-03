@@ -111,8 +111,10 @@ function SignUp_Login({
                 onChange={handleInput(setInputs)}
                 name={item.name}
                 onBlur={handleBlur}
-                error={errors[item.name]}
               />
+              {errors(item.name) && (
+                <div className="sign-up-error">{errors[item.name]}</div>
+              )}
               {(item.name === "password" ||
                 item.name === "passwordConfirm") && (
                 <i

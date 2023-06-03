@@ -1,28 +1,35 @@
+import redLion from '../../assets/Red-Lion.png'; // adjust path if necessary
+import blueLion from '../../assets/Blue-Lion.png'; // adjust path if necessary
+import blackLion from '../../assets/Black-Lion.PNG'; // adjust path if necessary
+import greenLion from '../../assets/Green-Lion.PNG'; // adjust path if necessary
+import yellowLion from '../../assets/Yellow-Lion.PNG'; // adjust path if necessary
+
+
 export const data = [
   {
     name: "Red Lion",
-    image: "src/assets/Red-Lion.png",
+    image: redLion,
     price: 300,
   },
   {
     name: "Blue Lion",
-    image: "src/assets/Blue-Lion.png",
+    image: blueLion,
     price: 350,
   },
   {
     name: "Black Lion",
-    image: "src/assets/Black-Lion.PNG",
+    image: blackLion,
     price: 500,
   },
   ,
   {
     name: "Green Lion",
-    image: "src/assets/Green-Lion.PNG",
+    image: greenLion,
     price: 250,
   },
   {
     name: "Yellow Lion",
-    image: "src/assets/Yellow-Lion.PNG",
+    image: yellowLion,
     price: 275,
   },
 ];
