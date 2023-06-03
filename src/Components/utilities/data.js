@@ -1,8 +1,8 @@
-import redLion from '../../assets/Red-Lion.png'; // adjust path if necessary
-import blueLion from '../../assets/Blue-Lion.png'; // adjust path if necessary
-import blackLion from '../../assets/Black-Lion.PNG'; // adjust path if necessary
-import greenLion from '../../assets/Green-Lion.PNG'; // adjust path if necessary
-import yellowLion from '../../assets/Yellow-Lion.PNG'; // adjust path if necessary
+import redLion from '../../assets/Red-Lion.png';
+import blueLion from '../../assets/Blue-Lion.png';
+import blackLion from '../../assets/Black-Lion.PNG'; 
+import greenLion from '../../assets/Green-Lion.PNG'; 
+import yellowLion from '../../assets/Yellow-Lion.PNG'; 
 
 
 export const data = [

@@ -5,6 +5,9 @@ import ItemGrid from "../ItemGrid/ItemGrid";
 import Ordering from "../Ordering/Ordering";
 import "./ShoppingModal.css";
 
+import blackLion from '../../assets/Black-Lion.PNG'; 
+import voltronCard from '../../assets/legendary-voltron.jpg'; 
+
 function ShoppingModal({
   showOrdering,
   setShowOrdering,
@@ -23,9 +26,12 @@ function ShoppingModal({
 
   return (
     <div className="store-front">
-      {/* <div className="test-image">
-        <img src="src\assets\portfolio-1.jpg" alt="" />
-      </div> */}
+      <div className="test-image">
+        <img src={blackLion} alt="" />
+      </div>
+      <div className="test-image">
+        <img src={voltronCard} alt="" />
+      </div>
       <Title
         userLoggedIn={userLoggedIn}
         setShowSignUpLogin={setShowSignUpLogin}

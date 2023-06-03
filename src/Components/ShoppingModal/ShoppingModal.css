@@ -3,7 +3,10 @@
   flex-direction: column;
   overflow: hidden;
 }
-
+.test-image img {
+  width: 200px;
+  height: 200px;
+}
 .featured-items {
   margin-top: 60px;
   display: flex;
