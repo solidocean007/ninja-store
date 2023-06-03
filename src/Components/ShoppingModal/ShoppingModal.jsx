@@ -5,9 +5,6 @@ import ItemGrid from "../ItemGrid/ItemGrid";
 import Ordering from "../Ordering/Ordering";
 import "./ShoppingModal.css";
 
-import blackLion from '../../assets/Black-Lion.PNG'; 
-import voltronCard from '../../assets/legendary-voltron.jpg'; 
-
 function ShoppingModal({
   showOrdering,
   setShowOrdering,
