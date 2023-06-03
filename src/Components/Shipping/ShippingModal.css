@@ -14,7 +14,6 @@
 
 .error-div {
   color: red;
-
 }
 
 .shipping-title {
@@ -24,7 +23,6 @@
 
 .address-details {
   display: flex;
-  /* flex-direction: column; */
   justify-content: space-between;
   height: 2rem;
   width: 300px;
@@ -47,23 +45,13 @@
 }
 
 .ship-method-panel {
-  padding: .5em;
+  padding: 0.5em;
   width: 100%;
 }
-
 
 @media (max-width: 850px) {
   .shipment-modal {
     height: auto;
     overflow-y: scroll;
   }
-
-}
-
-@media (max-width: 767px) {
-  
-}
-
-@media (max-width: 540px) {
-  
 }

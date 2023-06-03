@@ -1,11 +1,10 @@
-import { React, useState } from "react";
-import { data } from "../../../assets/data";
-import { handleCartUpdate } from "../../utilities/cart";
+import React from "react";
+import { data } from "../utilities/data";
+import { handleCartUpdate } from "../utilities/cart";
 import "./ItemGrid.css";
 
 function ItemGrid({ cartItems, setCartItems, activeCards, setActiveCards }) {
-
-  const generateItemBlock = ({ name, image, price, size }, index) => {
+  const generateItemBlock = ({ name, image, price }, index) => {
     const inCart = cartItems.find((obj) => obj.name === name);
     const buttonText = inCart ? "Remove item" : "Add to Cart";
     const isActive = activeCards[index];
@@ -23,10 +22,7 @@ function ItemGrid({ cartItems, setCartItems, activeCards, setActiveCards }) {
       <div className={`card ${isActive ? "active" : ""}`} key={index}>
         <div className="front">
           <div className="image-box">
-            <img
-              src={image}
-              alt={name}
-            />
+            <img src={image} alt={name} />
           </div>
           <div className="details">
             <div className="lion-header">

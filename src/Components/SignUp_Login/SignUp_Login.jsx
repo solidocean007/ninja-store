@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { inputData } from "../../assets/data";
+import { inputData } from "../utilities/data";
 import { validateInput, handleInput } from "../utilities/handleChanges";
 import { handleFormSubmit } from "./SignUp_LoginScript";
 import InputBase from "../Input/InputBase";
@@ -12,6 +12,17 @@ function SignUp_Login({
   setUserLoggedIn,
 }) {
   const [errors, setErrors] = useState({});
+  const [passwordVisibility, setPasswordVisibility] = useState({
+    password: false,
+    passwordConfirm: false,
+  });
+
+  const togglePasswordVisibility = (fieldName) => {
+    setPasswordVisibility({
+      ...passwordVisibility,
+      [fieldName]: !passwordVisibility[fieldName],
+    });
+  };
 
   const [inputs, setInputs] = useState({
     email: "",
@@ -76,28 +87,36 @@ function SignUp_Login({
           }
 
           return (
-            <>
+            <div style={{ position: 'relative' }}>
               <label htmlFor={item.id}>{item.label}</label>
-            
-            <InputBase
-            className={item.className}
-            key={item.name}
-            placeholder={
-              isSignUp
-                ? item.label
-                : item.name === "password"
-                ? "Enter password"
-                : item.label
-            }
-            type={item.type}
-            value={inputs[item.name]}
-            onChange={handleInput(setInputs)}
-            name={item.name}
-            onBlur={handleBlur}
-            error={errors[item.name]}
-          />
-            </>
         
+              <InputBase
+                className={item.className}
+                key={item.name}
+                placeholder={
+                  isSignUp
+                    ? item.label
+                    : item.name === "password"
+                    ? "Enter password"
+                    : item.label
+                }
+                type={item.name === "password" || item.name === "passwordConfirm" ? (passwordVisibility[item.name] ? 'text' : 'password') : item.type}
+                value={inputs[item.name]}
+                onChange={handleInput(setInputs)}
+                name={item.name}
+                onBlur={handleBlur}
+                error={errors[item.name]}
+              />
+              {(item.name === "password" || item.name === "passwordConfirm") && (
+                <i
+                  onClick={() => togglePasswordVisibility(item.name)}
+                  className={
+                    passwordVisibility[item.name] ? "fa fa-eye-slash" : "fa fa-eye"
+                  }
+                  style={{ position: 'absolute', right: 10, top: '50%', transform: 'translateY(-50%)' }}
+                ></i>
+              )}
+            </div>
           );
         })}
 

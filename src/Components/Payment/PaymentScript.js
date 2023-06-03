@@ -53,7 +53,7 @@ export const securityCodeValidation = (value) => {
 }
 
 
-export const validateCardInput = (name, value, inputs) => {
+export const validateCardInput = (name, value) => {
   let errorMessage = "";
   switch (name) {
     // other cases...

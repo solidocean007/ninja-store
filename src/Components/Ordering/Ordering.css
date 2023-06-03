@@ -8,7 +8,7 @@
   border-radius: 5px;
   padding: 5px;
   background-color: #13294a;
-  overflow-y: auto; 
+  overflow-y: auto;
 }
 
 .order-summary {
@@ -39,7 +39,6 @@
   .order-window {
     position: absolute;
     top: 0;
-    
   }
 }
 

@@ -1,4 +1,4 @@
-import SignUpLogInButton from "../SignUp_Login_Button/SignUpLogInButton";
+import SignUpLogInButton from "../SignUp_Login/SignUp_Login_Button/SignUpLogInButton";
 import CartButton from "../Cart/CartButton";
 import './Title.css'
 const Title = ({

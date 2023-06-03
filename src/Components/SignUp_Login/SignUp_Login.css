@@ -8,6 +8,7 @@
 
 .auth-modal {
   width: 100%;
+  margin-top: 50px;
   max-width: 50rem;
   position: fixed;
   top: 50%;
@@ -51,7 +52,6 @@ form input {
   margin-bottom: 20px;
 }
 
-
 form button {
   background-color: var(--color-accent);
   color: var(--color-light);
@@ -74,10 +74,19 @@ h3 {
   margin-top: 20px;
 }
 
+.fa-eye,
+.fa-eye-slash {
+  position: relative;
+  float: right;
+  margin-left: -25px;
+  margin-top: -25px;
+  cursor: pointer;
+}
+
+
 @media (max-width: 480px) {
   .auth-modal {
     width: 95%;
     padding: 1rem;
   }
 }
-

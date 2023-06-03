@@ -30,9 +30,9 @@ const ConfirmationScreen = ({
     onClose();
   };
 
-  const message = formVoltron ? 
-    `Thank you ${userLoggedIn} for your order to save the Galaxy!` : 
-    `You didn't save the Galaxy!  You failed to form Voltron!`;
+  const message = formVoltron
+    ? `Thank you ${userLoggedIn} for your order to save the Galaxy!`
+    : `You didn't save the Galaxy!  You failed to form Voltron!`;
 
   return (
     <div className="confirmation-block">
@@ -46,7 +46,6 @@ const ConfirmationScreen = ({
           ></iframe>
         </div>
       )}
-      
 
       <h2>{message}</h2>
       <div>Your payment for ${fullTotal} has been processed.</div>
@@ -64,7 +63,10 @@ const ConfirmationScreen = ({
         ))}
       </div>
 
-      <ButtonBase onClick={onFinish} buttonTitle={formVoltron ? "Thank you!" : "Try again!"} />
+      <ButtonBase
+        onClick={onFinish}
+        buttonTitle={formVoltron ? "Thank you!" : "Try again!"}
+      />
     </div>
   );
 };

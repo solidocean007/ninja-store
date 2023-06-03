@@ -1,11 +1,11 @@
 import { useState, useEffect } from "react";
 import Cart from "../Cart/Cart";
 import ProgressBar from "../ProgressBar/ProgressBar";
-import "./Ordering.css";
 import ShippingModal from "../Shipping/ShippingModal";
 import PaymentScreen from "../Payment/PaymentScreen";
 import ConfirmationScreen from "../Confirmation/ConfirmationScreen";
 import Summary from "../Summary/Summary";
+import "./Ordering.css";
 
 const Ordering = ({
   cartItems,

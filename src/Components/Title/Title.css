@@ -23,8 +23,8 @@
     to right,
     rgba(0, 255, 255, 1),
     rgba(0, 128, 128, 1)
-  ); /* gradient effect */
-  box-shadow: 0 0 10px aqua, 0 0 20px aqua; /* glowing effect */
+  );
+  box-shadow: 0 0 10px aqua, 0 0 20px aqua;
 }
 
 .logo-block {
@@ -78,7 +78,6 @@
     font-size: small;
   }
   .login-header {
-    /* flex-direction: column; */
     padding: auto;
   }
 }
@@ -110,6 +109,11 @@
 }
 
 @media (max-width: 400px) {
-  .logo-block img { height: 50px;}
-  .login-block button { width: 50px; font-size: xx-small;}
+  .logo-block img {
+    height: 50px;
+  }
+  .login-block button {
+    width: 50px;
+    font-size: xx-small;
+  }
 }

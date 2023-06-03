@@ -1,9 +1,7 @@
 import { useState } from "react";
-import SignUpLogInButton from "../SignUp_Login_Button/SignUpLogInButton";
-import CartButton from "../Cart/CartButton";
 import SignUp_Login from "../SignUp_Login/SignUp_Login";
 import Title from "../Title/Title";
-import ItemGrid from "./ItemGrid/ItemGrid";
+import ItemGrid from "../ItemGrid/ItemGrid";
 import Ordering from "../Ordering/Ordering";
 import "./ShoppingModal.css";
 
@@ -34,7 +32,12 @@ function ShoppingModal({
         cartItems={cartItems}
       />
 
-      <ItemGrid cartItems={cartItems} setCartItems={setCartItems} activeCards={activeCards} setActiveCards={setActiveCards}/>
+      <ItemGrid
+        cartItems={cartItems}
+        setCartItems={setCartItems}
+        activeCards={activeCards}
+        setActiveCards={setActiveCards}
+      />
 
       {showSignUpLogin && !userLoggedIn && (
         <div className="login-signUp-modal">

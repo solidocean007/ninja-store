@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import '../index.css'
 import ShoppingModal from '../Components/ShoppingModal/ShoppingModal'
-import CartButton from '../Components/Cart/CartButton'
+import '@fortawesome/fontawesome-free/css/all.min.css';
+
 
 function App() {
   const [stage, setStage] = useState(0);
