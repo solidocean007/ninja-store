@@ -70,8 +70,14 @@ h3 {
   color: var(--color-accent);
 }
 
+.switch-mode { display: flex; justify-content: flex-start; gap: 4em;}
+
 .switch-mode button {
   margin-top: 20px;
+}
+
+.facebook-btn button {
+  background-color: blue;
 }
 
 .fa-eye,

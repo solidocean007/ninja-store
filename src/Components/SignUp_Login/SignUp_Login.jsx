@@ -87,9 +87,9 @@ function SignUp_Login({
           }
 
           return (
-            <div style={{ position: 'relative' }}>
+            <div style={{ position: "relative" }}>
               <label htmlFor={item.id}>{item.label}</label>
-        
+
               <InputBase
                 className={item.className}
                 key={item.name}
@@ -100,20 +100,34 @@ function SignUp_Login({
                     ? "Enter password"
                     : item.label
                 }
-                type={item.name === "password" || item.name === "passwordConfirm" ? (passwordVisibility[item.name] ? 'text' : 'password') : item.type}
+                type={
+                  item.name === "password" || item.name === "passwordConfirm"
+                    ? passwordVisibility[item.name]
+                      ? "text"
+                      : "password"
+                    : item.type
+                }
                 value={inputs[item.name]}
                 onChange={handleInput(setInputs)}
                 name={item.name}
                 onBlur={handleBlur}
                 error={errors[item.name]}
               />
-              {(item.name === "password" || item.name === "passwordConfirm") && (
+              {(item.name === "password" ||
+                item.name === "passwordConfirm") && (
                 <i
                   onClick={() => togglePasswordVisibility(item.name)}
                   className={
-                    passwordVisibility[item.name] ? "fa fa-eye-slash" : "fa fa-eye"
+                    passwordVisibility[item.name]
+                      ? "fa fa-eye-slash"
+                      : "fa fa-eye"
                   }
-                  style={{ position: 'absolute', right: 10, top: '50%', transform: 'translateY(-50%)' }}
+                  style={{
+                    position: "absolute",
+                    right: 10,
+                    top: "50%",
+                    transform: "translateY(-50%)",
+                  }}
                 ></i>
               )}
             </div>
@@ -126,17 +140,16 @@ function SignUp_Login({
       </form>
 
       <div className="switch-mode">
-        {isSignUp ? (
-          <>
-            Already have an account?{" "}
-            <button onClick={toggleMode}>Switch to Login</button>
-          </>
-        ) : (
-          <>
-            Don't have an account?{" "}
-            <button onClick={toggleMode}>Switch to Sign Up</button>
-          </>
-        )}
+        <div className="switch-message">
+          {isSignUp ? "Already have an account?" : "Don't have an account?"}{" "}
+          <button onClick={toggleMode}>
+            {isSignUp ? "Switch to Login" : "Switch to Sign Up"}
+          </button>
+        </div>
+
+        <div className="facebook-btn">
+          <button>Facebook Sign in</button>
+        </div>
       </div>
     </div>
   );
