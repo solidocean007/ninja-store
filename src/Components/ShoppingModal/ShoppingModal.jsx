@@ -43,8 +43,7 @@ function ShoppingModal({
       />
 
       {showSignUpLogin && !userLoggedIn && (
-        <div className="login-signUp-modal">
-          <div className="modal-overlay"></div>
+        <div className="modal-overlay">
           <SignUp_Login
             setShowSignUpLogin={setShowSignUpLogin}
             users={users}
