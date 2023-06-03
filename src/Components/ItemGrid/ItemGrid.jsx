@@ -23,7 +23,6 @@ function ItemGrid({ cartItems, setCartItems, activeCards, setActiveCards }) {
         <div className="front">
           <div className="image-box">
             <img src={image} alt={name} />
-            <img src='src\assets\legendary-voltron.jpg' alt={name} />
           </div>
           <div className="details">
             <div className="lion-header">
