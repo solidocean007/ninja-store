@@ -13,7 +13,8 @@ const Title = ({
     <div className="title-block">
       <div className="header-trim"></div>
       <div className="logo-block">
-        <img src="src/assets/voltron-logo.png" alt="Voltron-image" />
+      <img src={new URL('../../assets/voltron-logo.png', import.meta.url).href} />
+
       </div>
       <div className="login-header">
         <div className="header-details">

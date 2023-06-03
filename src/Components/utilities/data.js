@@ -1,10 +1,3 @@
-// import redLion from '../../assets/Red-Lion.png';
-// import blueLion from '../../assets/Blue-Lion.png';
-// import blackLion from '../../assets/Black-Lion.PNG'; 
-// import greenLion from '../../assets/Green-Lion.PNG'; 
-// import yellowLion from '../../assets/Yellow-Lion.PNG'; 
-
-
 export const data = [
   {
     name: "Blue Lion",
@@ -16,20 +9,19 @@ export const data = [
     image: new URL('../../assets/Red-Lion.png', import.meta.url),
     price: 300,
   },
-  
   {
     name: "Black Lion",
-    image: new URL('../../assets/Black-Lion.PNG', import.meta.url),
+    image: new URL('../../assets/Black-Lion.png', import.meta.url),
     price: 500,
   },
   {
     name: "Green Lion",
-    image: new URL('../../assets/Green-Lion.PNG', import.meta.url),
+    image: new URL('../../assets/Green-Lion.png', import.meta.url),
     price: 250,
   },
   {
     name: "Yellow Lion",
-    image: new URL('../../assets/Yellow-Lion.PNG', import.meta.url),
+    image: new URL('../../assets/Yellow-Lion.png', import.meta.url),
     price: 275,
   },
 ];
