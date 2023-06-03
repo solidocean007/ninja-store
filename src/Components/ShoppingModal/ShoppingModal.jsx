@@ -23,7 +23,9 @@ function ShoppingModal({
 
   return (
     <div className="store-front">
-      <img src="src\assets\portfolio-1.jpg" alt="" />
+      <div className="test-image">
+        <img src="src\assets\portfolio-1.jpg" alt="" />
+      </div>
       <Title
         userLoggedIn={userLoggedIn}
         setShowSignUpLogin={setShowSignUpLogin}
