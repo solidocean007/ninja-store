@@ -26,12 +26,6 @@ function ShoppingModal({
 
   return (
     <div className="store-front">
-      <div className="test-image">
-        <img src={blackLion} alt="" />
-      </div>
-      <div className="test-image">
-        <img src={voltronCard} alt="" />
-      </div>
       <Title
         userLoggedIn={userLoggedIn}
         setShowSignUpLogin={setShowSignUpLogin}
