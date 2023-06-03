@@ -25,6 +25,7 @@
 
 .confirm-end {
   display: flex;
+  margin-bottom: 20px;
 }
 
 .confirm-end img {
@@ -37,14 +38,3 @@
   align-items: center;
   justify-content: space-between;
 }
-
-
-
-
-/* @media (max-width: 850px) {
-  iframe {
-    width: 800px;
-    height: 740px;
-  }
-} */
-
