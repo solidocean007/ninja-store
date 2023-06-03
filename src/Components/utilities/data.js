@@ -7,15 +7,16 @@
 
 export const data = [
   {
-    name: "Red Lion",
-    image: new URL('../../assets/Red-Lion.png', import.meta.url),
-    price: 300,
-  },
-  {
     name: "Blue Lion",
     image: new URL('../../assets/Blue-Lion.png', import.meta.url),
     price: 350,
   },
+  {
+    name: "Red Lion",
+    image: new URL('../../assets/Red-Lion.png', import.meta.url),
+    price: 300,
+  },
+  
   {
     name: "Black Lion",
     image: new URL('../../assets/Black-Lion.PNG', import.meta.url),
