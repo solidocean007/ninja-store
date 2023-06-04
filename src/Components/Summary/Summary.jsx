@@ -69,7 +69,16 @@ const Summary = ({
         <div>Total: ${fullTotal}</div>
       </div>
       <div className="summary-proceed-btn">
-        
+        {stage !== 2 && (
+          <ButtonBase
+            onClick={() => {
+              setStage((stage) => stage + 1);
+              window.scrollTo(0, 0);
+            }}
+            buttonTitle={getButtonTitle()}
+            disabled={!formIsValid && stage === 1}
+          />
+        )}
       </div>
     </div>
   );
