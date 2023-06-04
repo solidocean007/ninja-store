@@ -65,9 +65,24 @@ export function handleQuantityChange(setCart, index, newQuantity) {
 
 export const handlePaymentSubmit = (
   event,
-  { errors, paymentInputs, setPaymentInputs, setErrors, setStage, setLastFourCardNumbers }
+  {
+    errors,
+    paymentInputs,
+    setPaymentInputs,
+    setErrors,
+    setStage,
+    setLastFourCardNumbers,
+  }
 ) => {
   event.preventDefault();
+
+  const allInputsFilled = Object.values(paymentInputs).every(
+    (input) => input !== ""
+  );
+  if (!allInputsFilled) {
+    console.log("Not all inputs have been filled out");
+    return;
+  }
   const isValid = Object.values(errors).every((error) => error === "");
   if (isValid) {
     const lastFour = paymentInputs.cardNumber.slice(-4);
@@ -86,5 +101,6 @@ export const handlePaymentSubmit = (
     // clear errors
     setErrors({});
     setStage((stage) => stage + 1);
+    window.scrollTo(0, 0);
   }
 };

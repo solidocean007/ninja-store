@@ -1,11 +1,12 @@
-import React from "react";
-
-const ButtonBase = ({ onClick, buttonTitle, disabled }) => {
+const ButtonBase = ({ buttonTitle, disabled, onClick }) => {
+  const handleClick = () => {
+      onClick && onClick();
+  }
 
   return (
-    <button onClick={onClick} disabled={disabled}>
-      {buttonTitle}
-    </button>
+      <button disabled={disabled} onClick={handleClick}>
+          {buttonTitle}
+      </button>
   )
 }
 

@@ -7,7 +7,15 @@ import { states } from "./state_data";
 import { address_data } from "./address_data";
 import ShipMethod from "./Ship_Method/ShipMethod";
 
-const ShippingModal = ({ setFormIsValid, method, setMethod, setShippingCost, setStage, stage, ...otherProps }) => {
+const ShippingModal = ({
+  setFormIsValid,
+  method,
+  setMethod,
+  setShippingCost,
+  setStage,
+  stage,
+  ...otherProps
+}) => {
   const [errors, setErrors] = useState({});
   const [addressInputs, setAddressInputs] = useState({
     WholeName: "",
@@ -20,46 +28,50 @@ const ShippingModal = ({ setFormIsValid, method, setMethod, setShippingCost, set
   });
 
   const handleShippingMethod = (selectedMethod) => {
-    setMethod(selectedMethod);  // Update the shipping method state variable.
+    setMethod(selectedMethod); // Update the shipping method state variable.
     if (selectedMethod === "express") {
       setShippingCost(20);
     } else {
       setShippingCost(0);
     }
-};
+  };
 
+  // Update error state
+  const updateErrors = (name, value) => {
+    const validationError = validateInput(name, value, addressInputs);
 
-const handleBlur = (event) => {
-  const { name, value } = event.target;
-  const validationError = validateInput(name, value, addressInputs);
-  
-  setErrors(prevErrors => {
-    return { ...prevErrors, [name]: validationError };
-  });
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [name]: validationError,
+    }));
+  };
 
-  // Check if all fields are filled and have no errors
-  const allFieldsFilled = Object.values(addressInputs).every(
-    (input) => input !== ""
-  );
-  
-  const noErrors = Object.values(errors).every(
-    (error) => error === ""
-  );
+  // Check form validity
+  const checkFormValidity = (name, value) => {
+    const allFieldsFilled = Object.values({
+      ...addressInputs,
+      [name]: value,
+    }).every((input) => input !== "");
 
-  // If all fields are filled and there are no errors, the form is valid
-  if (allFieldsFilled && noErrors) {
-    setFormIsValid(true);
-  } else {
-    setFormIsValid(false);
-  }
-};
+    const noErrors = Object.values({
+      ...errors,
+      [name]: validateInput(name, value, addressInputs),
+    }).every((error) => error === "");
 
+    setFormIsValid(allFieldsFilled && noErrors);
+  };
+
+  const handleBlur = (event) => {
+    const { name, value } = event.target;
+
+    updateErrors(name, value);
+    checkFormValidity(name, value);
+  };
 
   return (
     <div className="shipment-modal">
       <div className="shipping-title">SHIPPING INFORMATION</div>
 
-      {/* <form onSubmit={handleFormSubmit}> */}
       <form>
         <div className="shipping-details">
           {address_data.map((input) => {
@@ -67,7 +79,6 @@ const handleBlur = (event) => {
               <div className="address-details" key={input.name}>
                 <label htmlFor="">{input.label}</label>
                 <InputBase
-                  key={input.name}
                   value={addressInputs[input.name]}
                   onChange={handleInput(setAddressInputs)}
                   name={input.name}

@@ -55,7 +55,6 @@ const PaymentScreen = ({ setStage, fullTotal, setLastFourCardNumbers }) => {
             setPaymentInputs,
             setErrors,
             setStage,
-            fullTotal,
             setLastFourCardNumbers
           })
         }

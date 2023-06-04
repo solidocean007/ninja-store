@@ -15,6 +15,7 @@ const ProgressBar = ({ stage }) => {
           {index !== barParts.length - 1 && (
             <div
               className={`p-Bar ${stage > index ? "active" : ""}`}
+              key={index}
             ></div>
           )}
         </>

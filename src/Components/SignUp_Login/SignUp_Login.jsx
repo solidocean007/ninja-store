@@ -17,13 +17,6 @@ function SignUp_Login({
     passwordConfirm: false,
   });
 
-  const togglePasswordVisibility = (fieldName) => {
-    setPasswordVisibility({
-      ...passwordVisibility,
-      [fieldName]: !passwordVisibility[fieldName],
-    });
-  };
-
   const [inputs, setInputs] = useState({
     email: "",
     password: "",
@@ -34,6 +27,13 @@ function SignUp_Login({
   });
 
   const [isSignUp, setIsSignUp] = useState(true);
+
+  const togglePasswordVisibility = (fieldName) => {
+    setPasswordVisibility({
+      ...passwordVisibility,
+      [fieldName]: !passwordVisibility[fieldName],
+    });
+  };
 
   const handleBlur = ({ target: { name, value } }) => {
     const validationError = validateInput(name, value, inputs, users, isSignUp);
@@ -87,12 +87,11 @@ function SignUp_Login({
           }
 
           return (
-            <div style={{ position: "relative" }}>
+            <div style={{ position: "relative" }} key={item.name}>
               <label htmlFor={item.id}>{item.label}</label>
 
               <InputBase
                 className={item.className}
-                key={item.name}
                 placeholder={
                   isSignUp
                     ? item.label
@@ -137,13 +136,14 @@ function SignUp_Login({
         })}
 
         <div className="btn-wrapper">
-          <input type="submit" value={isSignUp ? "Create Account" : "Login"} />
+          <input type="submit" value={isSignUp ? "Submit" : "Login"} />
         </div>
       </form>
-
+      <div className="switch-message">
+        {isSignUp ? "Already have an account?" : "Don't have an account?"}{" "}
+      </div>
       <div className="switch-mode">
-        <div className="switch-message">
-          {isSignUp ? "Already have an account?" : "Don't have an account?"}{" "}
+        <div className="switch-div">
           <button onClick={toggleMode}>
             {isSignUp ? "Switch to Login" : "Switch to Sign Up"}
           </button>

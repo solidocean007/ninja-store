@@ -14,18 +14,18 @@
 .stage-box {
   display: flex;
   align-items: center;
-}
+} 
 
 .p-Box {
   display: flex;
   justify-content: center;
   align-items: center;
   color: black;
-  height: 45px;
+  height: 25px;
   border-radius: 10px;
   letter-spacing: 1px;
   background-color:rgb(237, 243, 235);
-  padding: 20px;
+  padding: 15px;
 }
 
 .p-Box.active, .p-Bar.active {

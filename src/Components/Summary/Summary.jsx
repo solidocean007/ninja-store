@@ -17,8 +17,8 @@ const Summary = ({
   const [discount, setDiscount] = useState(0);
 
   const handlePromoApply = () => {
-    if (promoCode === 'GAC10') {
-      setDiscount(0.10);
+    if (promoCode === "GAC10") {
+      setDiscount(0.1);
     }
   };
 
@@ -56,7 +56,10 @@ const Summary = ({
       <div className="summary-details">
         <div className="promo-box">
           <h5>Promo: </h5>
-         <InputBase value={promoCode} onChange={(e) => setPromoCode(e.target.value)}/>
+          <InputBase
+            value={promoCode}
+            onChange={(e) => setPromoCode(e.target.value)}
+          />
           <button onClick={handlePromoApply}>Apply</button>
         </div>
         <div className="Sub-total">Subtotal: ${subTotalBill - discount}</div>
@@ -66,11 +69,7 @@ const Summary = ({
         <div>Total: ${fullTotal}</div>
       </div>
       <div className="summary-proceed-btn">
-        <ButtonBase
-          onClick={() => setStage((stage) => stage + 1)}
-          buttonTitle={getButtonTitle()}
-          disabled={!formIsValid && stage === 1}
-        />
+        
       </div>
     </div>
   );

@@ -12,6 +12,7 @@ const initialInputs = {
 
 export const handleFormSubmit = (event, { errors, inputs, setInputs, users, setUsers, setShowSignUpLogin, setUserLoggedIn, isSignUp }) => {
   event.preventDefault();
+  window.scrollTo(0, 0);
   const isValid = Object.values(errors).every((error) => error === "");
   if (isValid) {
     if(isSignUp){
