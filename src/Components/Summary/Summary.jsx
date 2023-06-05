@@ -38,18 +38,20 @@ const Summary = ({
   return (
     <div className="cart-summary">
       <div className="cart-contents">
-        {cartItems.map((item) => (
-          <div className="summary-item">
-            <div className="item-img">
-              <img src={item.image} alt="" />
-            </div>
-            <div className="item-details">
-              <h5>{item.name}</h5>
-              <h5>qty {item.quantity}</h5>
-              <h5>${item.price}</h5>
-            </div>
-            <div className="item-subTotal">${item.quantity * item.price}</div>
-          </div>
+        {cartItems.map((item, quantity) => (
+           item.quantity > 0 ? 
+            <div className="summary-item" key={item.name}> {/* don't forget to add unique key prop */}
+              <div className="item-img">
+                <img src={item.image} alt={item.name} />
+              </div>
+              <div className="item-details">
+                <h5>{item.name}</h5>
+                <h5>qty {item.quantity}</h5>
+                <h5>${item.price}</h5>
+              </div>
+              <div className="item-subTotal">${item.quantity * item.price}</div>
+            </div> 
+            : null
         ))}
       </div>
 
@@ -82,6 +84,7 @@ const Summary = ({
       </div>
     </div>
   );
+
 };
 
 export default Summary;

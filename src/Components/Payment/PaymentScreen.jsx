@@ -68,6 +68,7 @@ const PaymentScreen = ({ setStage, fullTotal, setLastFourCardNumbers }) => {
               name="cardHolderName"
               id="cardHolderName"
               onBlur={handleBlur}
+              required
             />
             {errors.cardHolderName && (
               <div className="error-div">{errors.cardHolderName}</div>
@@ -81,6 +82,7 @@ const PaymentScreen = ({ setStage, fullTotal, setLastFourCardNumbers }) => {
               name="cardNumber"
               id="cardNumber"
               onBlur={handleBlur}
+              required
             />
             {errors.cardNumber && (
               <div className="error-div">{errors.cardNumber}</div>
@@ -94,6 +96,7 @@ const PaymentScreen = ({ setStage, fullTotal, setLastFourCardNumbers }) => {
               value={paymentInputs.cardExpMonth}
               onChange={handleInput(setPaymentInputs)}
               onBlur={handleBlur}
+              required
             >
               <option value="">Month</option>
               {cardMonth.map((month, index) => (
@@ -112,6 +115,7 @@ const PaymentScreen = ({ setStage, fullTotal, setLastFourCardNumbers }) => {
               value={paymentInputs.cardExpYear}
               onChange={handleInput(setPaymentInputs)}
               onBlur={handleBlur}
+              required
             >
               <option value="">Year</option>
               {years.map((year, index) => (
@@ -129,6 +133,7 @@ const PaymentScreen = ({ setStage, fullTotal, setLastFourCardNumbers }) => {
               name="cardCVV"
               id="cardCVV"
               onBlur={handleBlur}
+              required
             />
             {errors.cardCVV && (
               <div className="error-div">{errors.cardCVV}</div>

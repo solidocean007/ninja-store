@@ -110,6 +110,7 @@ function SignUp_Login({
                 onChange={handleInput(setInputs)}
                 name={item.name}
                 onBlur={handleBlur}
+                required
               />
               {errors[item.name] && (
                 <div className="sign-up-error">{errors[item.name]}</div>

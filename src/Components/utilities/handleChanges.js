@@ -38,7 +38,14 @@ export const validateInput = (name, value, inputs, users, isSignUp) => {
         }
       }
       break;
-    // ... rest of the cases.
+
+    case "firstName":
+    case "lastName":
+      if (isSignUp) {
+        if (!/^[a-zA-Z ]*$/i.test(value)) {
+          errorMessage = "Alphabetical letters only";
+        }
+      }
   }
 
   return errorMessage;
@@ -58,7 +65,8 @@ export function handleQuantityChange(setCart, index, newQuantity) {
     const updatedCart = [...prevCart];
     newQuantity >= 0
       ? (updatedCart[index].quantity = newQuantity)
-      : updatedCart;
+      : // : newQuantity === 0 ? updatedCart
+        updatedCart;
     return updatedCart;
   });
 }
