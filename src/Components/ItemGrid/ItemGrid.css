@@ -13,22 +13,29 @@
 }
 
 .card img {
-  position: relative; /* Add this line */
+  position: relative;
   transition: transform 0.5s ease-in-out;
+  filter: grayscale(70%);
 }
 
 .card.active {
   overflow: visible;
+  border-color: aliceblue;
+  background: linear-gradient(0deg, rgba(232, 234, 238, 1) 0%, rgb(6, 3, 50) 50%);
+
+  
 }
 
 .card.active img {
   transform: scale(1.15);
-  z-index: 5; /* This will now work because the image has a position value other than 'static' */
+  z-index: 5;
+  filter: grayscale(0%);
+
 }
 
 button {
-  position: relative; /* Add this line */
-  z-index: 6; /* Add this line, and make sure it's higher than the z-index of the image */
+  position: relative;
+  z-index: 6; 
 }
 
 
