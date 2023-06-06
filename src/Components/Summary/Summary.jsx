@@ -1,14 +1,15 @@
 import { useState, useEffect } from "react";
 import InputBase from "../Input/InputBase.jsx";
 import ButtonBase from "../ButtonBase/ButtonBase.jsx";
-
+import { handleShippingMethod } from "../Shipping/ShippingScripts.js";
 import "./Summary.css";
 
 const Summary = ({
   cartItems,
+  setCartItems,
   stage,
   setStage,
-  formIsValid,
+  // formIsValid,
   subTotalBill,
   shippingCost,
   fullTotal,
@@ -21,6 +22,11 @@ const Summary = ({
       setDiscount(0.1);
     }
   };
+
+  const finalCart = () => {
+    const thisCart = cartItems.filter(item => item.quantity > 0);
+    setCartItems(thisCart);
+  }
 
   const getButtonTitle = () => {
     switch (stage) {
@@ -40,7 +46,7 @@ const Summary = ({
       <div className="cart-contents">
         {cartItems.map((item, quantity) => (
            item.quantity > 0 ? 
-            <div className="summary-item" key={item.name}> {/* don't forget to add unique key prop */}
+            <div className="summary-item" key={item.name}>
               <div className="item-img">
                 <img src={item.image} alt={item.name} />
               </div>
@@ -74,11 +80,12 @@ const Summary = ({
         {stage !== 2 && (
           <ButtonBase
             onClick={() => {
-              setStage((stage) => stage + 1);
+              finalCart();
+              handleShippingMethod(selectedMethod, setMethod);
               window.scrollTo(0, 0);
             }}
             buttonTitle={getButtonTitle()}
-            disabled={!formIsValid && stage === 1}
+            // disabled={!formIsValid && stage === 1}
           />
         )}
       </div>

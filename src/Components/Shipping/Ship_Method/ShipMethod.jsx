@@ -1,6 +1,6 @@
 import './ShipMethod.css'
 
-const ShipMethod = ({ handleShippingMethod, method, setMethod, setStage, stage }) => {
+const ShipMethod = ({ handleShippingMethod, method, setMethod, setStage }) => {
 
   const handleChange = (e) => {
     setMethod(e.target.value);

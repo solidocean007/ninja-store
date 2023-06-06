@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./ShippingModal.css";
 import InputBase from "../Input/InputBase";
 import { handleInput, validateInput } from "../utilities/handleChanges";
+import { handleShippingMethod } from "./ShippingScripts";
 import { countries } from "./shipping_data";
 import { states } from "./state_data";
 import { address_data } from "./address_data";
@@ -27,52 +28,44 @@ const ShippingModal = ({
     state: "",
   });
 
-  const handleShippingMethod = (selectedMethod) => {
-    setMethod(selectedMethod); // Update the shipping method state variable.
-    if (selectedMethod === "express") {
-      setShippingCost(20);
-    } else {
-      setShippingCost(0);
+  const handleSubmit = (event) => {
+    event.preventDefault();  // Prevent form from submitting and refreshing the page
+  
+    // Create an object to hold the new errors
+    let newErrors = {};
+  
+    // Validate each input field
+    Object.keys(addressInputs).forEach((inputName) => {
+      const inputValue = addressInputs[inputName];
+      
+      // The validateInput function returns a string error message or an empty string if there is no error
+      const validationResult = validateInput(inputName, inputValue, addressInputs);
+      
+      // If there is an error, add it to the newErrors object
+      if (validationResult) {
+        newErrors[inputName] = validationResult;
+      }
+    });
+  
+    // Update the errors state
+    setErrors(newErrors);
+  
+    // If there are no errors, proceed to the next stage
+    if (Object.keys(newErrors).length === 0) {
+      setStage((currentStage) => {
+        const nextStage = currentStage + 1;
+        console.log('New stage:', nextStage); // Log the new stage to the console
+        return nextStage;
+      });
     }
   };
-
-  // Update error state
-  const updateErrors = (name, value) => {
-    const validationError = validateInput(name, value, addressInputs);
-
-    setErrors((prevErrors) => ({
-      ...prevErrors,
-      [name]: validationError,
-    }));
-  };
-
-  // Check form validity
-  const checkFormValidity = (name, value) => {
-    const allFieldsFilled = Object.values({
-      ...addressInputs,
-      [name]: value,
-    }).every((input) => input !== "");
-
-    const noErrors = Object.values({
-      ...errors,
-      [name]: validateInput(name, value, addressInputs),
-    }).every((error) => error === "");
-
-    setFormIsValid(allFieldsFilled && noErrors);
-  };
-
-  const handleBlur = (event) => {
-    const { name, value } = event.target;
-
-    updateErrors(name, value);
-    checkFormValidity(name, value);
-  };
+  
 
   return (
     <div className="shipment-modal">
       <div className="shipping-title">SHIPPING INFORMATION</div>
 
-      <form>
+      <form onSubmit={handleSubmit}>
         <div className="shipping-details">
           {address_data.map((input) => {
             return (
@@ -82,7 +75,7 @@ const ShippingModal = ({
                   value={addressInputs[input.name]}
                   onChange={handleInput(setAddressInputs)}
                   name={input.name}
-                  onBlur={handleBlur}
+                  // onBlur={handleBlur}
                   type={input.type}
                 />
                 {errors[input.name] && (

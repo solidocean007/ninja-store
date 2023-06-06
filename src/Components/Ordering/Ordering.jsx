@@ -16,7 +16,7 @@ const Ordering = ({
   setStage,
   setActiveCards,
 }) => {
-  const [formIsValid, setFormIsValid] = useState(false);
+  // const [formIsValid, setFormIsValid] = useState(false);
   const [subTotalBill, setSubTotalBill] = useState(0);
   const [shippingCost, setShippingCost] = useState(0);
   const [method, setMethod] = useState("standard");
@@ -95,9 +95,10 @@ const Ordering = ({
           {showSummary && (
             <Summary
               cartItems={cartItems}
+              setCartItems={setCartItems}
               stage={stage}
               setStage={setStage}
-              formIsValid={formIsValid}
+              // formIsValid={formIsValid}
               subTotalBill={subTotalBill}
               shippingCost={shippingCost}
               fullTotal={fullTotal}

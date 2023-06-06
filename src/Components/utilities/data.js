@@ -31,7 +31,7 @@ export const inputData = [
   {
     className: "email-input",
     id: 'email',
-    label: "Your email address",
+    label: "Your email address *",
     value: "email",
     name: "email",
     type: "text",
@@ -40,7 +40,7 @@ export const inputData = [
   {
     className: "password-input",  
     id: 'password',
-    label: "Create a password",
+    label: "Create a password *",
     name: "password",
     type: "password",
     value: "",
@@ -49,7 +49,7 @@ export const inputData = [
   {
     className: "passwordConfirm-input",  
     id: 'passwordConfirm',
-    label: "Confirm your password",
+    label: "Confirm your password *",
     name: "passwordConfirm",
     value: "",
     type: "password",
@@ -58,7 +58,7 @@ export const inputData = [
   {
     className: "firstName-input",  
     id: 'firstName',
-    label: "First Name",
+    label: "First Name *",
     name: "firstName",
     value: "",
     type: "text",
@@ -67,7 +67,7 @@ export const inputData = [
   {
     className: "lastName-input",  
     id: 'lastName',
-    label: "Last Name",
+    label: "Last Name *",
     name: "lastName",
     value: "",
     type: "text",
@@ -75,7 +75,7 @@ export const inputData = [
   },
   {
     className: "postalCode-input",  
-    label: "Postal code",
+    label: "Postal code *",
     name: "postalCode",
     value: "",
     type: "text",
