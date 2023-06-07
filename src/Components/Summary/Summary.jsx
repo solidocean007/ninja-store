@@ -42,7 +42,7 @@ const Summary = ({
   return (
     <div className="cart-summary">
       <div className="cart-contents">
-        {cartItems.map((item, quantity) => (
+        {cartItems.map((item) => (
            item.quantity > 0 ? 
             <div className="summary-item" key={item.name}>
               <div className="item-img">

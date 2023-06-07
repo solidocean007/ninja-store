@@ -91,7 +91,7 @@ const ShippingModal = ({
           <div className="region-details">
             {arr.map((item) => (
               <>
-                <h4>{item.id[1].toUpperCase() + item.substring(1)}</h4>
+                <h4>{item.id[1].toUpperCase() + item.id.slice(1)}</h4>
                 <select
                   name={item.id}
                   id={item.id}
@@ -106,7 +106,6 @@ const ShippingModal = ({
                 </select>
               </>
             ))}
-            
           </div>
         </div>
         <button type="submit" style={{ display: "none" }}>
