@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import InputBase from "../Input/InputBase.jsx";
 import ButtonBase from "../ButtonBase/ButtonBase.jsx";
-import { handleShippingMethod } from "../Shipping/ShippingScripts.js";
 import "./Summary.css";
 
 const Summary = ({
@@ -9,7 +8,6 @@ const Summary = ({
   setCartItems,
   stage,
   setStage,
-  // formIsValid,
   subTotalBill,
   shippingCost,
   fullTotal,
@@ -51,9 +49,7 @@ const Summary = ({
                 <img src={item.image} alt={item.name} />
               </div>
               <div className="item-details">
-                <h5>{item.name}</h5>
-                <h5>qty {item.quantity}</h5>
-                <h5>${item.price}</h5>
+                {[`${item.name}`, `qty ${item.quantity}`, `$${item.price}`].map((item) => <h5 key={item}>{item}</h5>)}
               </div>
               <div className="item-subTotal">${item.quantity * item.price}</div>
             </div> 
@@ -81,11 +77,10 @@ const Summary = ({
           <ButtonBase
             onClick={() => {
               finalCart();
-              handleShippingMethod(selectedMethod, setMethod);
+              setStage(stage + 1);
               window.scrollTo(0, 0);
             }}
             buttonTitle={getButtonTitle()}
-            // disabled={!formIsValid && stage === 1}
           />
         )}
       </div>

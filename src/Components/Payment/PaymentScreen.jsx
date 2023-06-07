@@ -142,7 +142,7 @@ const PaymentScreen = ({ setStage, fullTotal, setLastFourCardNumbers }) => {
         </div>
         <div className="submit-panel">
           <input type="submit" value={`Pay $${fullTotal}`} />
-          <button onClick={setStage(1)}>Back to Shipping</button>
+          <button onClick={() => setStage(1)}>Back to Shipping</button>
         </div>
       </form>
     </div>

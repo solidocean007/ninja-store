@@ -1,8 +1,5 @@
-export const handleShippingMethod = (selectedMethod, setMethod) => {
+export const handleShippingMethod = (selectedMethod, setMethod, setShippingCost) => {
   setMethod(selectedMethod); // Update the shipping method state variable.
-  if (selectedMethod === "express") {
-    setShippingCost(20);
-  } else {
-    setShippingCost(0);
-  }
+   const cost = selectedMethod === "express" ? 20 : 0;
+   setShippingCost(cost);
 };

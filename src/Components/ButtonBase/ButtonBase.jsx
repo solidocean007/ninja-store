@@ -1,13 +1,13 @@
 const ButtonBase = ({ buttonTitle, disabled, onClick }) => {
   const handleClick = () => {
-      onClick && onClick();
-  }
+    onClick && onClick();
+  };
 
   return (
-      <button disabled={disabled} onClick={handleClick}>
-          {buttonTitle}
-      </button>
-  )
-}
+    <button disabled={disabled} onClick={handleClick}>
+      {buttonTitle}
+    </button>
+  );
+};
 
 export default ButtonBase;

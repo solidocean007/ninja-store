@@ -1,14 +1,14 @@
-import './ShipMethod.css'
+import "./ShipMethod.css";
 
-const ShipMethod = ({ handleShippingMethod, method, setMethod, setStage }) => {
-
+const ShipMethod = ({ handleShippingMethod, method, setMethod, setStage, setShippingCost }) => {
   const handleChange = (e) => {
-    setMethod(e.target.value);
-    handleShippingMethod(e.target.value);
+    const selectedMethod = e.target.value;
+    setMethod(selectedMethod);
+    handleShippingMethod(selectedMethod, setMethod, setShippingCost);
   };
 
   return (
-    <div className='ship-method'>
+    <div className="ship-method">
       <div className="ship-option">
         <label>
           <input

@@ -16,7 +16,6 @@ const Ordering = ({
   setStage,
   setActiveCards,
 }) => {
-  // const [formIsValid, setFormIsValid] = useState(false);
   const [subTotalBill, setSubTotalBill] = useState(0);
   const [shippingCost, setShippingCost] = useState(0);
   const [method, setMethod] = useState("standard");
@@ -47,14 +46,11 @@ const Ordering = ({
       case 1:
         return (
           <ShippingModal
-            cartItems={cartItems}
-            setCartItems={setCartItems}
-            onClose={onClose}
-            setFormIsValid={setFormIsValid}
             method={method}
             setMethod={setMethod}
             setShippingCost={setShippingCost}
             setStage={setStage}
+            stage={stage}
           />
         );
       case 2:
@@ -98,7 +94,6 @@ const Ordering = ({
               setCartItems={setCartItems}
               stage={stage}
               setStage={setStage}
-              // formIsValid={formIsValid}
               subTotalBill={subTotalBill}
               shippingCost={shippingCost}
               fullTotal={fullTotal}
