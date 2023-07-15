@@ -31,7 +31,6 @@ function ShoppingModal({
         stage={stage}
         cartItems={cartItems}
       />
-      <div className="how-to-form-voltron"><h1>Buy one of each Lion!</h1></div>
       <ItemGrid
         cartItems={cartItems}
         setCartItems={setCartItems}

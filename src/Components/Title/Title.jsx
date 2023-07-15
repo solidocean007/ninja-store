@@ -9,13 +9,13 @@ const Title = ({
   stage,
   cartItems,
 }) => {
+
+  const numberOfItems = cartItems.length;
   return (
     <div className="title-block">
       <div className="header-trim"></div>
       <div className="logo-block">
-        <img
-          src={new URL("../../assets/voltron-logo.png", import.meta.url).href}
-        />
+       <h1>Ninja Store</h1>
       </div>
       <div className="login-header">
         <div className="header-details">
@@ -36,6 +36,7 @@ const Title = ({
                   userLoggedIn={userLoggedIn}
                   setShowOrdering={setShowOrdering}
                   setShowSignUpLogin={setShowSignUpLogin}
+                  numberOfItems={numberOfItems}
                 />
               ) : null}
             </div>

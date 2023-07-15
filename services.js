@@ -10,8 +10,8 @@ async function fetchProducts() {
 
     if (response.ok) {
       const json = await response.json();
+      // console.log(json, ":json")
       const storeData = json.data;
-      console.log(storeData) // This logs and array of 20 objects.
       const formattedData = storeData
       .filter(item => item && item.name)
       .map((item)=>{
