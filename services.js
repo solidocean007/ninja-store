@@ -2,7 +2,7 @@ import { NINJA_API, COMMERCE_URL } from "./constants";
 
 async function fetchProducts() {
   try {
-    const response = await fetch(COMMERCE_URL, {
+    const response = await fetch(`${COMMERCE_URL}?limit=50`, {
       headers: {
         'X-Authorization': NINJA_API,
       },
@@ -10,7 +10,7 @@ async function fetchProducts() {
 
     if (response.ok) {
       const json = await response.json();
-      // console.log(json, ":json")
+      console.log(json, ":json")
       const storeData = json.data;
       const formattedData = storeData
       .filter(item => item && item.name)

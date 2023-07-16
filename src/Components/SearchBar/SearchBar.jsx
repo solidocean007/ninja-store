@@ -5,7 +5,7 @@ export const SearchBar = ({ onSearch, searchQuery, setSearchQuery }) => {
   const handleSearchInput = (e) => {
     const query = e.target.value;
     setSearchQuery(query);
-    onSearch(query);
+    onSearch(e);
   };
 
   return (

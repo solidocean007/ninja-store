@@ -30,6 +30,10 @@ function ItemGrid({ cartItems, setCartItems, activeCards, setActiveCards }) {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    updateFilteredItems();
+  }, [activeCategories, searchQuery]);
+
   const handleItemClick = (item, index) => {
     const inCart = cartItems.find((obj) => obj.name === item.name);
     handleCartUpdate(item, cartItems, setCartItems);
@@ -60,30 +64,30 @@ function ItemGrid({ cartItems, setCartItems, activeCards, setActiveCards }) {
       ]);
     }
 
-    updateFilteredItems(items, searchQuery, activeCategories);
+    updateFilteredItems();
   };
 
   const handleSearch = (event) => {
     const query = event.target.value;
     setSearchQuery(query);
-    updateFilteredItems(items, query, activeCategories);
+    updateFilteredItems();
   };
 
-    const updateFilteredItems = (items, query, categories) => {
-      const filtered = items.filter((item) => {
-        if (categories.length > 0 && !categories.includes(item.category)) {
-          return false;
-        }
+  const updateFilteredItems = () => {
+    const filtered = items.filter((item) => {
+      if (activeCategories.length > 0 && !activeCategories.includes(item.category)) {
+        return false;
+      }
 
-        if (query.trim() !== "") {
-          return item.name.toLowerCase().includes(query.toLowerCase());
-        }
+      if (searchQuery.trim() !== "") {
+        return item.name.toLowerCase().includes(searchQuery.toLowerCase());
+      }
 
-        return true;
-      });
+      return true;
+    });
 
-      setFilteredItems(filtered);
-    };
+    setFilteredItems(filtered);
+  };
 
   return (
     <>
@@ -106,6 +110,7 @@ function ItemGrid({ cartItems, setCartItems, activeCards, setActiveCards }) {
               inCart={cartItems.find((obj) => obj.name === item.name)}
               isActive={activeCards[index]}
               handleClick={() => handleItemClick(item, index)}
+              setCartItems={setCartItems}
             />
           ))}
       </div>

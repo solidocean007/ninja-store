@@ -1,12 +1,12 @@
-function ItemCard({ item, inCart, isActive, handleClick }) {
+import { useState } from "react";
+import { CardDetails } from "../CardDetails/CardDetails";
+
+function ItemCard({ item, inCart, isActive, handleClick, setCartItems }) {
+  const [showDetails, setShowDetails] = useState(false);
   const buttonText = inCart ? "Remove item" : "Add to Cart";
 
-  const handleDetailsClick = () => {
-    // open a modal with image, name, price, details, add to cart button
-  };
-
   return (
-    <div>
+    <>
       <div className={`card ${isActive ? "active" : ""}`}>
         <div className="front">
           <div className="image-box">
@@ -17,7 +17,9 @@ function ItemCard({ item, inCart, isActive, handleClick }) {
               <h2>{item.name}</h2>
             </div>
             <div className="item-details">
-              <button onClick={handleDetailsClick}>Details</button>
+              <button onClick={() => setShowDetails(!showDetails)}>
+                Details
+              </button>
             </div>
             <div className="lion-price">
               <h1>{item.price}</h1>
@@ -28,7 +30,14 @@ function ItemCard({ item, inCart, isActive, handleClick }) {
           </div>
         </div>
       </div>
-    </div>
+      {showDetails && (
+          <div className="modal-overlay">
+            <div className="details-container">
+            <CardDetails setCartItems={setCartItems} />
+          </div>
+          </div>
+        )}
+    </>
   );
 }
 
