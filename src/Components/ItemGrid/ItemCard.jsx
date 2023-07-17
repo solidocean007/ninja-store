@@ -1,5 +1,6 @@
 import { useState } from "react";
-import { CardDetails } from "../CardDetails/CardDetails";
+import CartItem from "../Cart/CartItem";
+
 
 function ItemCard({ item, inCart, isActive, handleClick, setCartItems }) {
   const [showDetails, setShowDetails] = useState(false);
@@ -29,14 +30,20 @@ function ItemCard({ item, inCart, isActive, handleClick, setCartItems }) {
             </div>
           </div>
         </div>
-      </div>
-      {showDetails && (
+        {showDetails && (
           <div className="modal-overlay">
             <div className="details-container">
-            <CardDetails setCartItems={setCartItems} />
+            <CartItem
+                setCartItems={setCartItems}
+                item={{ ...item, image: item.imageUrl }} // Pass the image URL as image prop
+                showDescription={true}
+                setShowDetails={setShowDetails}
+              />
           </div>
           </div>
         )}
+      </div>
+      
     </>
   );
 }
