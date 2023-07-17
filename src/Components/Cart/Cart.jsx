@@ -2,6 +2,7 @@ import CartItem from "./CartItem";
 import "./Cart.css";
 
 function Cart({ cartItems, setCartItems, onClose }) {
+  console.log(cartItems);
   return (
     <>
       <div className="cart-modal" id="cart-container-modal">

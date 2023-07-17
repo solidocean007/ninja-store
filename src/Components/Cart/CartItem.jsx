@@ -15,11 +15,13 @@ const CartItem = ({ item, index, setCartItems, showDescription, setShowDetails }
     handleQuantityChange(setCartItems, index, quantity + 1);
   };
 
+
   return (
     <div className="cart-items" key={name}>
-      {setShowDetails && <button onClick={()=> setShowDetails(false)}></button>}
       <div className="cart-item-image">
         <img src={item.imageUrl} alt={name} />
+      {setShowDetails && <button className='close-details'onClick={()=> setShowDetails(false)}>X</button>}
+
       </div>
       <div className="cartItem-middle">
         <div className="cart-item">{name}</div>
