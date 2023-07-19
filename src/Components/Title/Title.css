@@ -67,6 +67,11 @@
   font-size: smaller;
 }
 
+.cart-button-zone {
+  display: flex;
+  align-items: center;
+}
+
 @media (max-width: 780px) {
   .title-block {
     padding: 0 10%;

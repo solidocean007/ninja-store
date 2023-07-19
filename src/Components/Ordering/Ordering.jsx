@@ -25,7 +25,10 @@ const Ordering = ({
 
   useEffect(() => {
     const subTotal = cartItems.reduce(
-      (accumulator, { price, quantity }) => accumulator + price * quantity,
+      (accumulator, { price, quantity }) => {
+        const priceParsed = parseFloat(price.replace("$", ""));
+        return accumulator + priceParsed * quantity;
+      },
       0
     );
 

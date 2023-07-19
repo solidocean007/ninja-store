@@ -60,16 +60,28 @@ export const handleInput = (setInputs) => (event) => {
   setInputs((oldValues) => ({ ...oldValues, [name]: value }));
 };
 
-export function handleQuantityChange(setCart, index, newQuantity) {
+export function handleQuantityChange(setCart, index, inventory, newQuantity, item) {
   setCart((prevCart) => {
     const updatedCart = [...prevCart];
-    newQuantity >= 0
-      ? (updatedCart[index].quantity = newQuantity)
-      : // : newQuantity === 0 ? updatedCart
-        updatedCart;
+
+    if (index !== undefined && index >= 0 && index < updatedCart.length) {
+      // Update existing item in cart
+      const existingItem = updatedCart[index];
+      if (newQuantity >= 0 && newQuantity <= inventory) {
+        existingItem.quantity = newQuantity;
+      }
+    } else {
+      // Add new item to cart
+      if (newQuantity >= 0 && newQuantity <= inventory) {
+        const newItem = { ...item, quantity: newQuantity };
+        updatedCart.push(newItem);
+      }
+    }
+
     return updatedCart;
   });
 }
+
 
 export const handlePaymentSubmit = (
   event,

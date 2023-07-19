@@ -1,19 +1,18 @@
-// import "./CardDetails.css";
-// export function CardDetails({ setCartItems, item }) {
-//   return (
-//     <div className="card-details-modal">
-//       <h2>{item.name}</h2>
-//       <div className="image-box">
-//         <img src={item.imageUrl} alt={item.name} />
-//       </div>
-//       <div className="details">
-        
-//         <div className="item-details">{item.description}</div>
-//         <div className="lion-price">
-//           <h1>{item.price}</h1>
-//         </div>
-//         <div className=""></div>
-//       </div>
-//     </div>
-//   );
-// }
+import './CardDetails.css'
+
+export const CardDetails = ({ item, setShowDetails }) => {
+  const { name, imageUrl, price, description, inventory } = item;
+  return (
+    <div className="card-details">
+      <div className="card-details-image">
+        <img src={imageUrl} alt={name} />
+        <button className="close-details" onClick={() => setShowDetails(false)}>
+          X
+        </button>
+      </div>
+      <div className="card-details-item">{name}</div>
+        <div className="card-details-item">{price}</div>
+      <div className="card-details-item">{description}</div>
+    </div>
+  );
+};

@@ -46,12 +46,12 @@ const Summary = ({
            item.quantity > 0 ? 
             <div className="summary-item" key={item.name}>
               <div className="item-img">
-                <img src={item.image} alt={item.name} />
+                <img src={item.imageUrl} alt={item.name} />
               </div>
               <div className="item-details">
-                {[`${item.name}`, `qty ${item.quantity}`, `$${item.price}`].map((item) => <h5 key={item}>{item}</h5>)}
+                {[`${item.name}`, `qty ${item.quantity}`, `${item.price}`].map((item) => <h5 key={item}>{item}</h5>)}
               </div>
-              <div className="item-subTotal">${item.quantity * item.price}</div>
+              <div className="item-subTotal">${(parseFloat(item.price.replace('$', '')) * item.quantity).toFixed(2)}</div>
             </div> 
             : null
         ))}

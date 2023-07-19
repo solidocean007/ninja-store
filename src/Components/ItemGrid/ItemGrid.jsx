@@ -75,7 +75,10 @@ function ItemGrid({ cartItems, setCartItems, activeCards, setActiveCards }) {
 
   const updateFilteredItems = () => {
     const filtered = items.filter((item) => {
-      if (activeCategories.length > 0 && !activeCategories.includes(item.category)) {
+      if (
+        activeCategories.length > 0 &&
+        !activeCategories.includes(item.category)
+      ) {
         return false;
       }
 

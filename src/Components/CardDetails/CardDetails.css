@@ -6,7 +6,46 @@
   z-index: 10;
   background-color: rgb(0, 0, 0);
   color: white;
-  width: 50%;
-  height: 50%;
+  width: auto;
+  height: auto;
+  padding: 30px;
 }
 
+.details-container .card-details-image {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.close-details {
+  width: 30px;
+  font-size: 20px;
+  font-weight: 900;
+  color: white;
+}
+
+.details-container .cartItem-middle {
+  flex-direction: column;
+}
+
+.details-container .card-details-item {
+  flex-direction: column;
+  width: auto;
+}
+
+.details-container .cart-item-image {
+  display: flex;
+  justify-content: space-between;
+}
+
+.number-in-cart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: green;
+  height: 40px;
+  width: 40px;
+  color: white;
+  font-weight: 700;
+  border-radius: 50%;
+  /* padding: 20px; */
+}
