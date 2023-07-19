@@ -35,7 +35,6 @@ const CartItem = ({
             <i className="fa-solid fa-arrow-left"></i>
           </button>
           {quantity || 0}
-          {console.log(quantity, ': quantity')}
           <button className="quantity-btn" onClick={increaseQuantity}>
             <i className="fa-solid fa-arrow-right"></i>
           </button>
